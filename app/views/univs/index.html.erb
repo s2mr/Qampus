@@ -1,16 +1,26 @@
+<!-- /*<style>   
+  background:
+    #fff
+    url(top-background.jpg)
+    no-repeat
+    fixed
+    center center;
+  background-size: cover;
+ </style>*/ -->
+ 
 <p id="notice"><%= notice %></p>
-
-<h1>まずは大学名で検索  <small><%= Univ.all.size %>件の大学が登録されています</small></h1>
-
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 text-center">
+    <h1>まずは大学名で検索</h1>
+  </div>
+</div>
 <br>
-
-<%= search_form_for @q, url:search_univs_path, class: "form-inline" do |f| %>
-  <div class="box"></div>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="form-group">
-        <%= f.search_field :name_cont, class: "form-control top-field", placeholder: "大学名を入力！" %> <%= f.submit "検索", class: "btn btn-default btn-lg"  %>
+<div class="row search-form">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <%= search_form_for @q, url:search_univs_path, class: "form-inline" do |f| %>
+      <div class="form-group  top-form">
+        <%= f.search_field :name_cont, class: "form-control", placeholder: "大学名を入力！" %> <%= f.submit "検索", class: "btn btn-default btn-lg"  %>
       </div>
-    </div>
-  </div>  
-<% end %>
+    <% end %>
+  </div>
+</div>  
