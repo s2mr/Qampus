@@ -11,6 +11,11 @@
       </div>
 
       <div class="form-group">
+        <%= f.label :status_id, "ステータス" %><br />
+        <%= f.collection_select :status_id, Status.all, :id, :name, { include_blank: "ステータスを選択してください" }, { class: "form-control" } %>
+      </div>
+
+      <div class="form-group">
         <%= f.label :university_name, "大学名" %><br />
         <%= f.text_field :university_name, class: "form-control" %>
       </div>
