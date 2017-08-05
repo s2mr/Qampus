@@ -3,7 +3,7 @@
 <hr>
 <div class="row">
   <div class="col-md-1">
-    <img src="<%=@post.user.thumbnail%>" alt="サムネイル画像" style="background-color:red;">
+    <%= image_tag @post.user.thumbnail, class: "img-thumbnail"%>
   </div>
   <div class="col-md-11">
     <p><strong><%= @post.user.name %></strong></p>
@@ -19,7 +19,7 @@
 <% @comments.each do |comment|%>
   <div class="row">
     <div class="col-md-1">
-      <img src="<%=@post.user.thumbnail%>" alt="サムネイル画像" style="background-color:red;">
+      <%= image_tag comment.user.thumbnail, class: "img-thumbnail" %>
     </div>
     <div class="col-md-11">
       <p><strong><%= comment.user.try :name %> </strong></p>
