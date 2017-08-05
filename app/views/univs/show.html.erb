@@ -1,6 +1,23 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @univ.name %>のトップページ</h1>
 <br>
+<%= search_form_for @q, url:search_posts_path, local: true do |f| %>
+  <%= f.hidden_field :univ, value: @univ%>
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <div class="form-group">
+        <%= f.label :subject_cont, '科目名' %>
+        <%= f.search_field :subject_cont, class: "form-control input-sm" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <%= f.submit "検索", class: "btn btn-default"  %>
+      <%= link_to "リセット", request.path, class:"btn btn-default" %>
+    </div>
+  </div>
+<% end %>
 <h2>最近の質問</h2>
 <hr>
 <% @posts.each do |post| %>

@@ -3,11 +3,13 @@ class UnivsController < ApplicationController
 
   # GET /univs
   # GET /univs.json
+  # 大学検索画面（トップページ）
   def index    
     @q = Univ.ransack(params[:q])
     @univs = @q.result
   end
 
+  # 大学検索結果
   def search
     @q = Univ.ransack(params[:q])
     @univs = @q.result
@@ -15,8 +17,12 @@ class UnivsController < ApplicationController
   
   # GET /univs/1
   # GET /univs/1.json
+  # 大学トップページ
   def show
+    #FIX!! 大学で絞る
+    @q = @univ.posts.ransack(params[:q]) 
     @posts = @univ.posts
+    
   end
 
   # GET /univs/new
