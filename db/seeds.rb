@@ -15,3 +15,9 @@ statuses = ['高校生', '大学1年生', '大学2年生', '大学3年生', '大
 statuses.each do |status|
   Status.create(name: status)
 end
+
+Univ.each do |univ|
+  
+  Post.create()
+  
+end
