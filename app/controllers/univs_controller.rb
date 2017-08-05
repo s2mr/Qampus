@@ -3,10 +3,16 @@ class UnivsController < ApplicationController
 
   # GET /univs
   # GET /univs.json
-  def index
-    @univs = Univ.all
+  def index    
+    @q = Univ.ransack(params[:q])
+    @univs = @q.result
   end
 
+  def search
+    @q = Univ.ransack(params[:q])
+    @univs = @q.result
+  end
+  
   # GET /univs/1
   # GET /univs/1.json
   def show

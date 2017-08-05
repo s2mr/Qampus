@@ -2,25 +2,24 @@
 
 <h1>Univs</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<%= search_form_for @q, url:search_path do |f| %>
+  <div class="row">
+    <div class="col-sm-3 col-xs-12">
+      <div class="form-group">
+        <%= f.label :name_cont, '大学名' %>
+        <%= f.search_field :name_cont, class: "form-control input-sm" %>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <%= f.submit "検索", class: "btn btn-default"  %>
+      <%= link_to "リセット", request.path, class:"btn btn-default" %>
+    </div>
+  </div>
+<% end %>
 
-  <tbody>
-    <% @univs.each do |univ| %>
-      <tr>
-        <td><%= univ.name %></td>
-        <td><%= link_to 'Show', univ %></td>
-        <td><%= link_to 'Edit', edit_univ_path(univ) %></td>
-        <td><%= link_to 'Destroy', univ, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<% %>
+  <hr />
 
 <br>
 
