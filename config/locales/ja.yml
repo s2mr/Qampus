@@ -7,6 +7,29 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      post: "質問"
+      user: "ユーザ"
+      univ: "大学"
+      comment: "回答"
+      status: "属性"
+    attributes:
+      post:
+        subject: "科目"
+        title: "タイトル"
+        body: "本文"
+      user:
+        name: "ユーザ名"
+        university_name: "大学名"
+        thumbnail: "プロフィール画像"
+        email: "メールアドレス"
+        password: "パスワード"
+      univ:
+        name: "大学名"
+      comment:
+        body: "本文"
+      status:
+        name: "名称"
   date:
     abbr_day_names:
     - 日
