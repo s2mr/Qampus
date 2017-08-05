@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'univs/search', as: 'search'
   resources :univs
   devise_for :users
   resources :comments
