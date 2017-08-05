@@ -5,49 +5,69 @@
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div class="form-group">
-        <%= f.label :name, "ユーザ名" %><br />
-        <%= f.text_field :name, class: "form-control" %>
+      <div class="panel panel-default">
+        <div class="panel-heading">ユーザー</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <%= f.label :name, "ユーザ名" %><br />
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :status_id, "ステータス" %><br />
+            <%= f.collection_select :status_id, Status.all, :id, :name, { include_blank: "ステータスを選択してください" }, { class: "form-control" } %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :university_name, "大学名" %><br />
+            <%= f.text_field :university_name, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :email, "電子メール" %><br />
+            <%= f.email_field :email, autofocus: true, class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password, "パスワード" %>
+            <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> 文字以上が必要です)</em>
+            <% end %><br />
+            <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation, "パスワード再入力" %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :status_id, "ステータス" %><br />
-        <%= f.collection_select :status_id, Status.all, :id, :name, { include_blank: "ステータスを選択してください" }, { class: "form-control" } %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :university_name, "大学名" %><br />
-        <%= f.text_field :university_name, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :thumbnail, "プロフィール画像" %><br />
-        <%= f.text_field :thumbnail, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email, "電子メール" %><br />
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password, "パスワード" %>
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> 文字以上が必要です)</em>
-        <% end %><br />
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :password_confirmation, "パスワード再入力" %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+      <div class="panel panel-default">
+        <div class="panel-heading">プロフィール画像</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <% if current_user.present? %>
+              <% if current_user.thumbnail.empty? %>
+              <img src="http://design-ec.com/d/e_others_50/l_e_others_501.png" width="200">
+              <% else %>
+              <img src="<%= current_user.thumbnail %>" width="200">
+              <% end %>
+            <% else %>
+            <img src="http://design-ec.com/d/e_others_50/l_e_others_501.png" width="200">
+            <% end %> 
+            <br><br>
+            <%= f.label :thumbnail, "画像URL:" %><br />
+            <%= f.text_field :thumbnail, class: "form-control" %>
+          </div>
+        </div>
       </div>
 
       <div class="form-group">
         <%= f.submit "新規登録", class: "btn btn-default" %>
       </div>
-    <% end %>
+      <% end %>
 
-    <%= render "devise/shared/links" %>
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
-</div>
