@@ -10,16 +10,9 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :post_user_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :univ_id %>
-    <%= form.text_field :univ_id, id: :post_univ_id %>
-  </div>
+  
+  <%= form.hidden_field :user_id, id: :post_user_id %>
+  <%= form.hidden_field :univ_id, id: :post_univ_id %>
 
   <div class="field">
     <%= form.label :subject %>

@@ -1,26 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Univs</h1>
-
-<%= search_form_for @q, url:search_univs_path do |f| %>
-  <div class="row">
-    <div class="col-sm-3 col-xs-12">
-      <div class="form-group">
-        <%= f.label :name_cont, '大学名' %>
-        <%= f.search_field :name_cont, class: "form-control input-sm" %>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <%= f.submit "検索", class: "btn btn-default"  %>
-      <%= link_to "リセット", request.path, class:"btn btn-default" %>
-    </div>
-  </div>
-<% end %>
-
-<% %>
-  <hr />
+<h1>まずは大学名で検索  <small><%= Univ.all.size %>件の大学が登録されています</small></h1>
 
 <br>
 
-<%= link_to 'New Univ', new_univ_path %>
+<%= search_form_for @q, url:search_univs_path, class: "form-inline" do |f| %>
+  <div class="box"></div>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="form-group">
+        <%= f.search_field :name_cont, class: "form-control top-field", placeholder: "大学名を入力！" %> <%= f.submit "検索", class: "btn btn-default btn-lg"  %>
+      </div>
+    </div>
+  </div>  
+<% end %>
