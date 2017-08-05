@@ -3,18 +3,15 @@
 <h1>質問</h1>
 <hr>
 <p><strong>タイトル：</strong><%= @post.title%>　　　<strong>科目名：</strong><%=@post.subject%></p>
-<p><strong>本文：</strong><%=simple_format(@post.body)%><strong>ユーザ名：</strong><%=@post.user.name%></p>
+<p><strong>本文：</strong><%=simple_format(@post.body)%><strong>ユーザ名：<a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong></p>
 <hr>
 
 /* ここにフォーム　*/<br>
 
 <% @comments.each do |comment|%>
   <p><strong>本文：</strong><%=simple_format(comment.body)%></p>
-  <p><strong>ユーザ名：</strong><%=comment.user.try :name%></p>
+  <p><strong>ユーザ名：</strong><a href="users/<%=comment.user.try :id%>"><%=comment.user.try :name%></a></p>
 <% end%>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
-
-
-<a href="/uses/<%=@post.user.id%>"><%=@post.user.id%>プロフィール</a>
