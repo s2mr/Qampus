@@ -1,10 +1,8 @@
 <p id="notice"><%= notice %></p>
 <h1><%= @post.title %> (<%=@post.subject%>)<!-- FIXME ボタンを右端に寄せたい -->　　<%= link_to '質問を編集', edit_post_path(@post), class: "btn btn-default" %></h1>
 <hr>
-<<<<<<< HEAD
 <p><strong>タイトル：</strong><%= @post.title%>　　　<strong>科目名：</strong><%=@post.subject%></p>
 <p><strong>本文：</strong><%=simple_format(@post.body)%><strong>ユーザ名：<a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong></p>
-=======
 <div class="row">
   <div class="col-md-1">
     <%= image_tag @post.user.thumbnail, class: "img-thumbnail"%>
@@ -15,17 +13,14 @@
     <p><%= @post.created_at %></p>
   </div>
 </div>
->>>>>>> 1840db02b374dce96bc7a75a696ed700f655e082
 <hr>
 
 /* ここにフォーム　*/<br>
 <h2>回答</h2>
 <hr>
 <% @comments.each do |comment|%>
-<<<<<<< HEAD
   <p><strong>本文：</strong><%=simple_format(comment.body)%></p>
   <p><strong>ユーザ名：</strong><a href="users/<%=comment.user.try :id%>"><%=comment.user.try :name%></a></p>
-=======
   <div class="row">
     <div class="col-md-1">
       <% if comment.user.nil? %>
@@ -41,5 +36,4 @@
     </div>
   </div>
   <hr>
->>>>>>> 1840db02b374dce96bc7a75a696ed700f655e082
 <% end%>
