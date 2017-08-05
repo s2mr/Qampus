@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20170805062751) do
     t.integer "user_id"
     t.integer "univ_id"
     t.string "subject"
-    t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
