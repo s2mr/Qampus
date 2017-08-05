@@ -1,9 +1,13 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @univ.name %>
-</p>
+<h1><%= @univ.name %>のトップページ</h1>
+<br>
+<h2>最近の質問</h2>
+<hr>
+<% @posts.each do |post| %>
+  <p><strong>タイトル：</strong><%= link_to post.title, post_path(post)%>　　　<strong>科目名：</strong><%=post.subject%></p>
+  <p><strong>本文：</strong><%=simple_format(post.body)%><strong>ユーザ名：</strong><%=post.user.name%></p>
+  <hr>
+<% end %>
 
 <%= link_to 'Edit', edit_univ_path(@univ) %> |
 <%= link_to 'Back', univs_path %>

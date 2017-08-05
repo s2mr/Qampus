@@ -1,24 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @post.user %>
-</p>
+<h1>質問</h1>
+<hr>
+<p><strong>タイトル：</strong><%= @post.title%>　　　<strong>科目名：</strong><%=@post.subject%></p>
+<p><strong>本文：</strong><%=simple_format(@post.body)%><strong>ユーザ名：</strong><%=@post.user.name%></p>
+<hr>
 
-<p>
-  <strong>Univ:</strong>
-  <%= @post.univ %>
-</p>
+/* ここにフォーム　*/<br>
 
-<p>
-  <strong>Subject:</strong>
-  <%= @post.subject %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
+<% @comments.each do |comment|%>
+  <p><strong>本文：</strong><%=simple_format(comment.body)%></p>
+  <p><strong>ユーザ名：</strong><%=comment.user.try :name%></p>
+<% end%>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

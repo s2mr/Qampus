@@ -16,6 +16,7 @@ class UnivsController < ApplicationController
   # GET /univs/1
   # GET /univs/1.json
   def show
+    @posts = @univ.posts
   end
 
   # GET /univs/new
