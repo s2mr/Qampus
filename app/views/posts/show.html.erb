@@ -19,7 +19,11 @@
 <% @comments.each do |comment|%>
   <div class="row">
     <div class="col-md-1">
-      <%= image_tag comment.user.thumbnail, class: "img-thumbnail" %>
+      <% if comment.user.nil? %>
+        <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
+      <% else %>
+        <%= image_tag comment.user.thumbnail, class: "img-thumbnail" %>
+      <% end %>
     </div>
     <div class="col-md-11">
       <p><strong><%= comment.user.try :name %> </strong></p>
