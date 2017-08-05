@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>あなたの大学名で検索してみましょう</h1>
-<h2><strong><%= Univ.all.size %></strong>件の大学が登録されています</h2>
+<h1>まずは大学名で検索  <small><%= Univ.all.size %>件の大学が登録されています</small></h1>
 
 <br>
 
@@ -15,10 +14,3 @@
     </div>
   </div>  
 <% end %>
-
-<% %>
-  <hr />
-
-<br>
-
-<%= link_to 'New Univ', new_univ_path %>
