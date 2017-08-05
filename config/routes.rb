@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get 'univs/search', as: 'search'
+  get 'univs/search', as: 'search_univs'
   resources :univs
+  get 'univs/:id/search' => 'posts#search', as: 'search_posts'
   devise_for :users
   resources :comments
   resources :posts
