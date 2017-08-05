@@ -16,8 +16,13 @@ statuses.each do |status|
   Status.create(name: status)
 end
 
-Univ.each do |univ|
-  
-  Post.create()
-  
+User.create(name:'mitsuwo', status_id:2, email: 'test1@test.com', password: 'testest')
+User.create(name:'kazuo', status_id:2, email: 'test2@test.com', password: 'testest')
+
+
+Univ.all.each do |univ|
+  5.times do |i|
+    Post.create(user_id: 1, univ_id: univ.id, subject: "専門英語I", title: "困ってます part#{i}", body: "全然わからん")
+    Post.create(user_id: 2, univ_id: univ.id, subject: "専門英語II", title: "困ってます part#{i}", body: "全然わからん")
+  end
 end
