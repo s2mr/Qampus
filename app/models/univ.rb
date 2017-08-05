@@ -1,0 +1,2 @@
+class Univ < ApplicationRecord
+end
