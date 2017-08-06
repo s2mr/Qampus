@@ -21,7 +21,7 @@ class UnivsController < ApplicationController
   # 大学トップページ
   def show
     @q = @univ.posts.ransack(params[:q]) 
-    @posts = @univ.posts
+    @posts = @univ.posts.order('created_at DESC')
     @subjects = @univ.posts.pluck(:subject).uniq
   end
 

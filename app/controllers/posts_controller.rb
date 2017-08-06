@@ -28,7 +28,8 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    # univ = Univ.find()
+    @post = Post.new(univ_id: params[:id], user_id:current_user.id)
   end
 
   # GET /posts/1/edit

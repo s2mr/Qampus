@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   get 'univs/search', as: 'search_univs'
+  get 'univs/:id/new' => 'posts#new', as: 'new_post'
   get 'univs/:id/search' => 'posts#search', as: 'search_post'
   get 'univs/:id/search/:subject' => 'posts#search', as: 'filter_post'
   resources :univs
   devise_for :users
   resources :comments
-  resources :posts
+  resources :posts, except: [:new]
 
   get 'users/:id' => 'users#show', as: 'user' 
 
