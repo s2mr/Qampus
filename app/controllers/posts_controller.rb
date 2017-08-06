@@ -6,14 +6,14 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-  
+
   def search
     # @univ が欲しい
     univ = Univ.find(params[:id])
-    @q = univ.posts.ransack(params[:q])    
+    @q = univ.posts.ransack(params[:q])
     @posts = @q.result
   end
-  
+
   # GET /posts/1
   # GET /posts/1.json
   def show
