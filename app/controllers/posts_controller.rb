@@ -6,10 +6,10 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
   end
-  
+
   def search
     univ = Univ.find(params[:id])
-    @q = univ.posts.ransack(params[:q])    
+    @q = univ.posts.ransack(params[:q])
     @posts = @q.result
     if params[:q]
       @query = params[:q][:subject_cont]
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       @posts = univ.posts.where(subject: @query)
     end
   end
-  
+
   # GET /posts/1
   # GET /posts/1.json
   def show
