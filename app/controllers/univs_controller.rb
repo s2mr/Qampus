@@ -19,10 +19,9 @@ class UnivsController < ApplicationController
   # GET /univs/1.json
   # 大学トップページ
   def show
-    #FIX!! 大学で絞る
     @q = @univ.posts.ransack(params[:q]) 
     @posts = @univ.posts
-    
+    @subjects = @univ.posts.pluck(:subject).uniq
   end
 
   # GET /univs/new

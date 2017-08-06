@@ -1,33 +1,51 @@
-<p id="notice"><%= notice %></p>
-<br>
-<%= search_form_for @q, url:search_posts_path, local: true, class: 'form-inline' do |f| %>
-  <%= f.hidden_field :univ, value: @univ%>
-  <h1><%= @univ.name %>のトップページ　　　　　　　　　　　　<%= f.search_field :subject_cont, class: "form-control input-sm", placeholder: '科目名で検索！' %>  <%= f.submit "検索", class: "btn btn-default" %></h1>
+<div class="row">
+  <div class="col-md-8">
+    <h1><%= @univ.name %>のトップページ
+    <p id="notice"><%= notice %></p>
+    <br>
+      <h2>最近の質問</h2>
+    <hr>
+    <% @posts.each do |post| %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+         <h5 class="panel-title"><%= link_to post.title, post_path(post) %> (<%=post.subject%>)</h5>
+        </div>
+        <div class="panel-body">
+         <div class="row">
+           <div class="col-md-2">
+             <%= image_tag post.user.thumbnail, class: "img-thumbnail", size: '60x60'%>
+             <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+           </div>
+           <div class="col-md-10">
+             <p><%= post.body %></p>
+             <br>
+             <p><small>投稿日時：<%= post.created_at %></small></p>
+           </div>
+         </div>
+        </div>
+      </div>
+      <hr>
+    <% end %>
 
-<% end %>
-<h2>最近の質問</h2>
-<hr>
-<% @posts.each do |post| %>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-     <h5 class="panel-title"><%= link_to post.title, post_path(post) %> (<%=post.subject%>)</h5>
+    <%= link_to '大学情報を編集', edit_univ_path(@univ), class: 'btn btn-default' %>
     </div>
-    <div class="panel-body">
-     <div class="row">
-       <div class="col-md-1">
-         <%= image_tag post.user.thumbnail, class: "img-thumbnail"%>
-         <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
-       </div>
-       <div class="col-md-11">
-         <p><%= post.body %></p>
-         <br>
-         <p><small>投稿日時：<%= post.created_at %></small></p>
-       </div>
-     </div>
+    <div class="col-md-4">
+      <br>
+      <%= search_form_for @q, url:search_posts_path, local: true, class: 'form-inline' do |f| %>
+        <%= f.hidden_field :univ, value: @univ%>
+        <%= f.search_field :subject_cont, class: "form-control input-sm", placeholder: '科目名で検索！' %>  <%= f.submit "検索", class: "btn btn-default" %>
+      <% end%>
+        <br><br><br><br><br><br><br>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h5 class="panel-title">登録科目一覧</h5>
+          </div>
+          <ul class="list-group">
+          <% @subjects.each do |subject|%>
+        	  <li class="list-group-item"><%= subject %></li>
+          <% end %>
+          </ul>
+        </div>
     </div>
   </div>
-  <hr>
-<% end %>
-
-<%= link_to 'Edit', edit_univ_path(@univ) %> |
-<%= link_to 'Back', univs_path %>
+  
