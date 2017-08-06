@@ -1,10 +1,5 @@
 <p id="notice"><%= notice %></p>
 <hr>
-<p><strong>タイトル：</strong><%= @post.title%>　　　<strong>科目名：</strong><%=@post.subject%></p>
-<p><strong>本文：</strong><%=simple_format(@post.body)%><strong>ユーザ名：<a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong></p>
-<div class="row">
-  <div class="col-md-1">
-    <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -13,7 +8,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-1">
-        <%= image_tag @post.user.thumbnail, class: "img-thumbnail"%>
+        <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
         <strong><a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong>
       </div>
       <div class="col-md-11">
@@ -65,15 +60,6 @@
 
 <br>
 <% @comments.each do |comment|%>
-  <p><strong>本文：</strong><%=simple_format(comment.body)%></p>
-  <p><strong>ユーザ名：</strong><a href="users/<%=comment.user.try :id%>"><%=comment.user.try :name%></a></p>
-  <div class="row">
-    <div class="col-md-1">
-      <% if comment.user.nil? %>
-        <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
-      <% else %>
-        <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
-      <% end %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>回答</h4>
@@ -85,7 +71,7 @@
         <% if comment.user.nil? %>
           <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
         <% else %>
-          <%= image_tag comment.user.thumbnail, class: "img-thumbnail" %>
+          <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
         <% end %>
         <a href="users/<%=comment.user.try :id%>"><%=comment.user.try :name%></a>
       </div>
