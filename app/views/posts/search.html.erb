@@ -1,6 +1,27 @@
-<h1><strong><%= @query %></strong>での検索結果</h1>
+<h1>
+  <% if @query!='' %>
+    <strong><%= @query%></strong>での<% end %>検索結果　　<small><%= @posts.all.size %>件の質問がヒットしました</small>
+</h1>
+<hr>
+
 <% @posts.each do |post| %>
-  <p><strong>タイトル：</strong><%= link_to post.title, post_path(post)%>　　　<strong>科目名：</strong><%=post.subject%></p>
-  <p><strong>本文：</strong><%=simple_format(post.body)%><strong>ユーザ名：</strong><%=post.user.name%></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     <h5 class="panel-title"><%= link_to post.title, post_path(post) %> 　　（ <%=post.subject%> ）</h5>
+    </div>
+    <div class="panel-body">
+     <div class="row">
+       <div class="col-md-1">
+         <%= image_tag post.user.thumbnail, class: "img-thumbnail", size: '60x60'%>
+         <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+       </div>
+       <div class="col-md-11">
+         <p><%= post.body %></p>
+         <br>
+         <p><small>投稿日時：<%= post.created_at %></small></p>
+       </div>
+     </div>
+    </div>
+  </div>
   <hr>
 <% end %>
