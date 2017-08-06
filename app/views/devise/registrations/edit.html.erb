@@ -4,7 +4,22 @@
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
       <%= devise_error_messages! %>
-
+      <div class="panel panel-default">
+        <div class="panel-heading">プロフィール画像</div>
+        <div class="panel-body">
+          <div class="form-group">
+            <% if current_user.thumbnail.empty? %>
+              <%= image_tag 'thumbnails/default.png', size: '200x200'%>
+            <% else %>
+              <%= image_tag current_user.thumbnail, size: '200x200'%>
+            <% end %>
+            <br>
+            <br>
+            <%= f.label :thumbnail, "画像URL:" %><br />
+            <%= f.text_field :thumbnail, class: "form-control" %>
+          </div>
+        </div>
+      </div>
       <div class="panel panel-default">
         <div class="panel-heading">ユーザー</div>
         <div class="panel-body">
@@ -44,23 +59,6 @@
     　　　</div>
   　　　</div>
 　　　</div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">プロフィール画像</div>
-        <div class="panel-body">
-          <div class="form-group">
-                 <% if current_user.thumbnail.empty? %>
-                 <img src="http://design-ec.com/d/e_others_50/l_e_others_501.png" width="200">
-                 <% else %>
-                 <img src="<%= current_user.thumbnail %>" width="200">
-                 <% end %>
-                 <br>
-                 <br>
-                 <%= f.label :thumbnail, "画像URL:" %><br />
-            　　　<%= f.text_field :thumbnail, class: "form-control" %>
-          　　　</div>
-      </div>
-    </div>
 
     <div class="actions">
         <%= f.submit "更新する", class: "btn btn-default" %>
