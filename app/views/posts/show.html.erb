@@ -44,7 +44,7 @@
         <p><%=current_user.try :name%></p>
         <% else %>
         <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
-        <p>名無しさん</p>
+        <p><small>名無しさん</small></p>
         <% end %>
       </div>
       <div class="col-md-11">

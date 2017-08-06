@@ -3,7 +3,11 @@
     <h1><strong><%= @univ.name %></strong></h1>
     <p id="notice"><%= notice %></p>
     <br>
-      <h2>最近の質問　　　　　　　　　　　　　　　　　<%= link_to '質問する', new_post_path, class: 'btn btn-primary' %></h2>
+      <h2>最近の質問　　　　　　　　　　　　　　　　
+        <% if user_signed_in? %>
+          <%= link_to '質問する', new_post_path, class: 'btn btn-primary' %>
+        <% end %>
+      </h2>
     <hr>
     <% @posts.each do |post| %>
       <div class="panel panel-default">
