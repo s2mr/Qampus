@@ -9,9 +9,9 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
-              <div class="col-md-10"><h5 class="panel-title"><%= link_to post.title, post_path(post) %></h5></div>
-              <div class="col-md-2"><h5 class="panel-title"><%=post.subject%></h5></div>
-            
+            <div class="col-md-8"><h5 class="panel-title"><%= link_to post.title, post_path(post) %></h5></div>
+            <div class="col-md-2"><h5 class="panel-title text-right"><%=post.subject%></h5></div>
+            <div class="col-md-2"><h5 class="panel-title">コメント<strong><%=post.comments.size%></strong>件</h5></div>
           </div>
         </div>
         <div class="panel-body">
