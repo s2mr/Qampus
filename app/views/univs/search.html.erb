@@ -2,8 +2,8 @@
 <h1>検索結果  <small><%= @univs.all.size %>件の大学がヒットしました</small></h1>
 <hr>
 <% @univs.each do |univ|%>
-  <p><%= link_to univ.name, univ_path(univ.id), class: "search"%></p>
+  <p><%= link_to univ.name, univ_path(univ.id)%></p>
 <% end %>
-
+<hr>
 <h3>あなたの大学が見つかりませんか？</h3>
-<%= link_to '新しく大学を登録する', new_univ_path %>
+<%= link_to '新しく大学を登録する', new_univ_path, class: 'btn btn-default' %>

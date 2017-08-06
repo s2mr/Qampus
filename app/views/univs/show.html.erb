@@ -1,28 +1,30 @@
 <p id="notice"><%= notice %></p>
-<h1><%= @univ.name %>のトップページ</h1>
 <br>
-<%= search_form_for @q, url:search_posts_path, local: true do |f| %>
+<%= search_form_for @q, url:search_posts_path, local: true, class: 'form-inline' do |f| %>
   <%= f.hidden_field :univ, value: @univ%>
-  <div class="row">
-    <div class="col-sm-3 col-xs-12">
-      <div class="form-group">
-        <%= f.label :subject_cont, '科目名' %>
-        <%= f.search_field :subject_cont, class: "form-control input-sm" %>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <%= f.submit "検索", class: "btn btn-default"  %>
-      <%= link_to "リセット", request.path, class:"btn btn-default" %>
-    </div>
-  </div>
+  <h1><%= @univ.name %>のトップページ　　　　　　　　　　　　<%= f.search_field :subject_cont, class: "form-control input-sm", placeholder: '科目名で検索！' %>  <%= f.submit "検索", class: "btn btn-default" %></h1>
+
 <% end %>
 <h2>最近の質問</h2>
 <hr>
 <% @posts.each do |post| %>
-  <p><strong>タイトル：</strong><%= link_to post.title, post_path(post)%>　　　<strong>科目名：</strong><%=post.subject%></p>
-  <p><strong>本文：</strong><%=simple_format(post.body)%><strong>ユーザ名：</strong><%=post.user.name%></p>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+     <h4><%= post.title %> (<%=post.subject%>)
+    </div>
+    <div class="panel-body">
+     <div class="row">
+       <div class="col-md-1">
+         <%= image_tag post.user.thumbnail, class: "img-thumbnail"%>
+         <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+       </div>
+       <div class="col-md-11">
+         <p><%= post.body %></p>
+         <p><%= post.created_at %></p>
+       </div>
+     </div>
+    </div>
+  </div>
   <hr>
 <% end %>
 
