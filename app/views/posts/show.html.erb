@@ -74,10 +74,11 @@
       <div class="col-md-1">
         <% if comment.user.nil? %>
           <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
+          <p><small>名無しさん</small></p>
         <% else %>
           <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
+          <%= link_to comment.user.try(:name), user_path(comment.user)%>
         <% end %>
-        <a href="users/<%=comment.user.try :id%>"><%=comment.user.try :name%></a>
       </div>
       <div class="col-md-11">
         <p><%= simple_format(comment.body) %></p>
