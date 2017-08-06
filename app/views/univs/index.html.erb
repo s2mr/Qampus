@@ -1,16 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<h1>まずは大学名で検索  <small><%= Univ.all.size %>件の大学が登録されています</small></h1>
+<h1><small><%= Univ.all.size %>件の大学が登録されています</small></h1>
 
 <br>
 
-<%= search_form_for @q, url:search_univs_path, class: "form-inline" do |f| %>
-  <div class="box"></div>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <div class="form-group">
-        <%= f.search_field :name_cont, class: "form-control top-field", placeholder: "大学名を入力！" %> <%= f.submit "検索", class: "btn btn-default btn-lg"  %>
+
+<div class="container">
+	<div class="row">
+    <div id="custom-search-input">
+      <div class="input-group col-md-12">
+
+        <%= search_form_for @q, url:search_univs_path do |f| %>
+        <div class="col-xs-11">
+          <%= f.search_field :name_cont, class: "search-query form-control", placeholder: "まずは大学名で検索!" %>
+        </div>
+        <div class="col-xs-1">
+          <%= button_tag( class: "btn btn-danger" ) do %>
+          <%= content_tag :span, "", class: "glyphicon glyphicon-search" %>
+          <% end %>
+        </div>
+        <% end %>
+
       </div>
     </div>
-  </div>  
-<% end %>
+	</div>
+</div>
