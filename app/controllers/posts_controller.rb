@@ -18,8 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = @post.comments
-    # @comment = Comment.new
-    # @comment.post_id = @post.id
+    @comment = Comment.new(post_id: @post.id, user_id: current_user.try(:id))
   end
 
   # GET /posts/new
