@@ -5,23 +5,28 @@
       <div class="panel panel-default">
         <div class="panel-heading">ユーザー</div>
         <div class="panel-body">
-          <p>
-            ユーザ名：<%= @user.name %>
-          </p>
-          <br>
-          <% if @user.thumbnail.nil? %>
-          <img src="http://design-ec.com/d/e_others_50/l_e_others_501.png" width="200">
-          <% else %>
-          <img src="<%= @user.thumbnail %>" width="200">
-          <% end %>
-          <br><br><br>
-          <p>
-            大学名：<%= @user.university_name %>
-          </p>
-          <br>
-          <p>
-            ステータス：<%= @user.status.name %>
-          </p>
-          <br>
+          <div class="row">
+            <div class="col-md-1">
+              <% if @user.thumbnail.nil? %>
+                <% image_tag 'thumbnails/default.png', class: 'img-thumbnail'  %>
+              <% else %>
+                <% image_tag @user.thumbnail, class: 'img-thumbnail' %>
+              <% end %>
+            </div>
+            <div class="col-md-11">
+              <p>
+                ユーザ名：<%= @user.name %>
+              </p>
+              <br>
+              <p>
+                大学名：<%= @user.university_name %>
+              </p>
+              <br>
+              <p>
+                ステータス：<%= @user.status.name %>
+              </p>
+              <br>
+            </div>
+          </div>
         </div>
       </div>
