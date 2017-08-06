@@ -31,7 +31,7 @@
     </div>
     <div class="col-md-4">
       <br>
-      <%= search_form_for @q, url:search_posts_path, local: true, class: 'form-inline' do |f| %>
+      <%= search_form_for @q, url:search_post_path, local: true, class: 'form-inline' do |f| %>
         <%= f.hidden_field :univ, value: @univ%>
         <%= f.search_field :subject_cont, class: "form-control input-sm", placeholder: '科目名で検索！' %>  <%= f.submit "検索", class: "btn btn-default" %>
       <% end%>
@@ -42,7 +42,7 @@
           </div>
           <ul class="list-group">
           <% @subjects.each do |subject|%>
-        	  <li class="list-group-item"><%= subject %></li>
+        	  <li class="list-group-item"><%= link_to subject, filter_post_path(@univ.id, subject) %></li>
           <% end %>
           </ul>
         </div>

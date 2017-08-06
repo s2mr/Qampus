@@ -11,7 +11,12 @@ class PostsController < ApplicationController
     univ = Univ.find(params[:id])
     @q = univ.posts.ransack(params[:q])    
     @posts = @q.result
-    @query = params[:q][:subject_cont]
+    if params[:q]
+      @query = params[:q][:subject_cont]
+    elsif params[:subject]
+      @query = params[:subject]
+      @posts = univ.posts.where(subject: @query)
+    end
   end
   
   # GET /posts/1
