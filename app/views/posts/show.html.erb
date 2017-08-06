@@ -37,24 +37,46 @@
   <div class="panel-heading">
     <h4>回答</h4>
   </div>
+  <% if user_signed_in? %>
   <div class="panel-body">
-
     <div class="row">
       <div class="col-md-1">
           <%= image_tag current_user.thumbnail, class: "img-thumbnail" %>
-        <p><%=current_user.try :name%></p>
-      </div>
-      <div class="col-md-11">
-        <%= form_with model: Comment.new do |f| %>
-          <div class="form-group">
-            <%= f.label :body  %><br />
-            <%= f.text_field :body, class: "form-control" %>
-          </div>
-       <% end %>
+          <p><%=current_user.try :name%></p>
+        </div>
+        <div class="col-md-11">
+          <%= form_with model: @comment do |f| %>
+          <% f.hidden_field :post_id, :user_id %>
+            <div class="form-group">
+              <%= f.label :body  %><br />
+              <%= f.text_field :body, class: "form-control" %>
+            </div>
+            <hr>
+            <%= f.submit '回答を送信', class: "btn btn-default" %>
+         <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+          <% else %>
+          <div class="row">
+            <div class="col-md-1">
+                <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
+                <p>名無しさん</p>
+              </div>
+              <div class="col-md-11">
+                <%= form_with model: @comment do |f| %>
+                <% f.hidden_field :post_id %>
+                <div class="form-group">
+                  <%= f.label :body  %><br />
+                  <%= f.text_field :body, class: "form-control" %>
+                </div>
+                <hr>
+                <%= f.submit '回答を送信', class: "btn btn-default" %>
+                <% end %>
+              </div>
+            </div>
+            <% end %>
+          </div>
 
 <hr>
 

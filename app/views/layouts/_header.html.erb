@@ -19,8 +19,15 @@ function show_block(){
    }else{
       document.getElementById("hoge").style.display = "";
    }
-}
-</script>
+   var e = document.getElementById("hoge");
+   e.addEventListener("animationstart", listener, false);
+   e.addEventListener("animationend", listener, false);
+   e.addEventListener("animationiteration", listener, false);
+
+   var e = document.getElementById("hoge");
+   e.className = "slidein";
+ }
+ </script>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-menu">
       <ul class="nav navbar-nav navbar-right">
