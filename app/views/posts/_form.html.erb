@@ -14,22 +14,22 @@
   <%= form.hidden_field :user_id, id: :post_user_id %>
   <%= form.hidden_field :univ_id, id: :post_univ_id %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :subject %>
-    <%= form.text_field :subject, id: :post_subject %>
+    <%= form.text_field :subject, id: :post_subject, class: 'form-control' %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+    <%= form.text_field :title, id: :post_title, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body %>
+    <%= form.text_area :body, id: :post_body, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

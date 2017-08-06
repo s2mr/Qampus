@@ -3,12 +3,16 @@
     <h1><strong><%= @univ.name %></strong></h1>
     <p id="notice"><%= notice %></p>
     <br>
-      <h2>最近の質問</h2>
+      <h2>最近の質問　　　　　　　　　　　　　　　　　<%= link_to '質問する', new_post_path, class: 'btn btn-primary' %></h2>
     <hr>
     <% @posts.each do |post| %>
       <div class="panel panel-default">
         <div class="panel-heading">
-         <h5 class="panel-title"><%= link_to post.title, post_path(post) %> 　　（ <%=post.subject%> ）</h5>
+          <div class="row">
+              <div class="col-md-10"><h5 class="panel-title"><%= link_to post.title, post_path(post) %></h5></div>
+              <div class="col-md-2"><h5 class="panel-title"><%=post.subject%></h5></div>
+            
+          </div>
         </div>
         <div class="panel-body">
          <div class="row">
@@ -24,10 +28,9 @@
          </div>
         </div>
       </div>
-      <hr>
     <% end %>
-
     <%= link_to '大学情報を編集', edit_univ_path(@univ), class: 'btn btn-default' %>
+    <br><br>
     </div>
     <div class="col-md-4">
       <br>
