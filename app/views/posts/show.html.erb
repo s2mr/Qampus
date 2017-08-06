@@ -5,7 +5,7 @@
 <p><strong>本文：</strong><%=simple_format(@post.body)%><strong>ユーザ名：<a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong></p>
 <div class="row">
   <div class="col-md-1">
-    <%= image_tag @post.user.thumbnail, class: "img-thumbnail"%>
+    <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
   </div>
   <div class="col-md-11">
     <p><strong><%= @post.user.name %></strong></p>
@@ -26,7 +26,7 @@
       <% if comment.user.nil? %>
         <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
       <% else %>
-        <%= image_tag comment.user.thumbnail, class: "img-thumbnail" %>
+        <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
       <% end %>
     </div>
     <div class="col-md-11">
