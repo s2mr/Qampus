@@ -8,10 +8,10 @@ class PostsController < ApplicationController
   end
   
   def search
-    # @univ が欲しい
     univ = Univ.find(params[:id])
     @q = univ.posts.ransack(params[:q])    
     @posts = @q.result
+    @query = params[:q][:subject_cont]
   end
   
   # GET /posts/1

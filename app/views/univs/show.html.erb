@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-8">
-    <h1><%= @univ.name %>のトップページ
+    <h1><strong><%= @univ.name %></strong></h1>
     <p id="notice"><%= notice %></p>
     <br>
       <h2>最近の質問</h2>
@@ -8,7 +8,7 @@
     <% @posts.each do |post| %>
       <div class="panel panel-default">
         <div class="panel-heading">
-         <h5 class="panel-title"><%= link_to post.title, post_path(post) %> (<%=post.subject%>)</h5>
+         <h5 class="panel-title"><%= link_to post.title, post_path(post) %> 　　（ <%=post.subject%> ）</h5>
         </div>
         <div class="panel-body">
          <div class="row">

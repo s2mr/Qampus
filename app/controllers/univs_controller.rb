@@ -13,6 +13,7 @@ class UnivsController < ApplicationController
   def search
     @q = Univ.ransack(params[:q])
     @univs = @q.result
+    @query = params[:q][:name_cont]
   end
   
   # GET /univs/1

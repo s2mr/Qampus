@@ -1,5 +1,4 @@
-<h1>検索結果</h1>
-
+<h1><strong><%= @query %></strong>での検索結果</h1>
 <% @posts.each do |post| %>
   <p><strong>タイトル：</strong><%= link_to post.title, post_path(post)%>　　　<strong>科目名：</strong><%=post.subject%></p>
   <p><strong>本文：</strong><%=simple_format(post.body)%><strong>ユーザ名：</strong><%=post.user.name%></p>

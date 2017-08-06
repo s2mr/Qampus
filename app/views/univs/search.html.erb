@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<h1>検索結果  <small><%= @univs.all.size %>件の大学がヒットしました</small></h1>
+<h1><strong><%= @query %></strong>での検索結果　<small><%= @univs.all.size %>件の大学がヒットしました</small></h1>
 <hr>
 <% @univs.each do |univ|%>
   <p><%= link_to univ.name, univ_path(univ.id)%></p>
