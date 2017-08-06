@@ -10,7 +10,7 @@
 <% @posts.each do |post| %>
   <div class="panel panel-default">
     <div class="panel-heading">
-     <h4><%= post.title %> (<%=post.subject%>)
+     <h5 class="panel-title"><%= link_to post.title, post_path(post) %> (<%=post.subject%>)</h5>
     </div>
     <div class="panel-body">
      <div class="row">
@@ -20,7 +20,8 @@
        </div>
        <div class="col-md-11">
          <p><%= post.body %></p>
-         <p><%= post.created_at %></p>
+         <br>
+         <p><small>投稿日時：<%= post.created_at %></small></p>
        </div>
      </div>
     </div>
