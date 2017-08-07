@@ -16,21 +16,19 @@
 <%= image_tag 'icon.png'%>
 
 <div class="row">
+  <%= search_form_for @q, url:search_univs_path do |f| %>
   <div id="custom-search-input">
       <div class="input-group col-md-12">
 
-        <%= search_form_for @q, url:search_univs_path do |f| %>
-        <div class="col-xs-11">
           <%= f.search_field :name_cont, class: "search-query form-control", placeholder: "まずは大学名で検索!" %>
-        </div>
-        <div class="col-xs-1">
-          <%= button_tag( class: "btn btn-danger" ) do %>
+          <span class="input-group-btn">
+          <%= f.button class: "btn btn-danger"  do %>
           <%= content_tag :span, "", class: "glyphicon glyphicon-search" %>
           <% end %>
+          </span>
         </div>
-        <% end %>
-
       </div>
+      <% end %>
     </div>
 	</div>
 </div>
