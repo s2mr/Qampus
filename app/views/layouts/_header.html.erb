@@ -13,21 +13,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script>
-function show_block(){
-   if(document.getElementById("hoge").style.display == ""){
-      document.getElementById("hoge").style.display = "none";
-   }else{
-      document.getElementById("hoge").style.display = "";
-   }
-   var e = document.getElementById("hoge");
-   e.addEventListener("animationstart", listener, false);
-   e.addEventListener("animationend", listener, false);
-   e.addEventListener("animationiteration", listener, false);
-
-   var e = document.getElementById("hoge");
-   e.className = "slidein";
- }
- </script>
+    function show_block(){
+      if(document.getElementById("hoge").style.display == ""){
+        document.getElementById("hoge").style.display = "none";
+      }else{
+        document.getElementById("hoge").style.display = "";
+      }
+      var e = document.getElementById("hoge");
+      e.addEventListener("animationstart", listener, false);
+      e.addEventListener("animationend", listener, false);
+      e.addEventListener("animationiteration", listener, false);
+      var e = document.getElementById("hoge");
+      e.className = "slidein";
+    }
+    </script>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse-menu">
       <ul class="nav navbar-nav navbar-right">

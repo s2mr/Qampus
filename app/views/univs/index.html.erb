@@ -1,4 +1,4 @@
-<!-- /*<style>   
+<!-- /*<style>
   background:
     #fff
     url(top-background.jpg)
@@ -7,7 +7,7 @@
     center center;
   background-size: cover;
  </style>*/ -->
- 
+
 <p id="notice"><%= notice %></p>
 
 <h1 class="text-right"><small><%= Univ.all.size %>件の大学が登録されています</small></h1>
@@ -15,9 +15,8 @@
 <br>
 <%= image_tag 'icon.png'%>
 
-<div class="container">
-	<div class="row">
-    <div id="custom-search-input">
+<div class="row">
+  <div id="custom-search-input">
       <div class="input-group col-md-12">
 
         <%= search_form_for @q, url:search_univs_path do |f| %>

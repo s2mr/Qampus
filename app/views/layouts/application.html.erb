@@ -7,21 +7,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-
-    <footer id="footer" class="footer">
-      <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
-      </div>
-    </footer>
-    <script type="text/javascript" src="./footerFixed.js"></script>
-
   </head>
 
   <body>
-    <%= render partial: 'layouts/header' %>
-
-    <div class="container">
-      <%= yield %>
+    <div class="wrapper">
+      <%= render partial: 'layouts/header' %>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <%= render partial: 'layouts/footer' %>
     </div>
   </body>
 </html>
