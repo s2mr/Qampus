@@ -5,13 +5,15 @@
 <!-- 質問 -->
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4 class="panel-title"><%= @post.title %> (<%=@post.subject%>)<!-- FIXME ボタンを右端に寄せたい -->　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　<%= link_to '質問を編集', edit_post_path(@post), class: "btn btn-default" %></h4>
+    <h4 class="panel-title"><%= @post.title %>
+      (<%=@post.subject%>)<!-- FIXME ボタンを右端に寄せたい -->
+      <%= link_to '質問を編集', edit_post_path(@post), class: "btn btn-default" %></h4>
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col-md-1">
         <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
-        <strong><a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong>
+        <strong><%= link_to @post.user.name, user_path(@post.user) %></strong>
       </div>
       <div class="col-md-11">
         <p><%= simple_format(@post.body) %></p>
@@ -20,13 +22,16 @@
     <hr>
     <div class="row">
       <div class="col-xs-offset-1 col-md-2">
-        <a href="javascript:void(0)" onclick="show_block();"><i class="fa fa-reply fa-2x"></i></span>
+        <a href="javascript:void(0)" onclick="show_block();">
+          <i class="fa fa-reply fa-2x"></i>
+        </span>
       </div>
       <div class="col-xs-offset-1 col-md-2">
-        <a><i class="fa fa-thumbs-up fa-2x"></i></a>
+        <a>
+          <i class="fa fa-thumbs-up fa-2x"></i>
+        </a>
       </div>
-      <div class="col-md-3">
-      </div>
+      <div class="col-md-3"></div>
       <div class="col-md-3">
         <%= @post.created_at %>
       </div>
@@ -36,7 +41,7 @@
 <!-- 回答用フォーム -->
 <div id="hoge" class="panel panel-default animation-target" style="display: none;">
   <div class="panel-heading">
-  <h4 class="panel-title">回答</h4>
+    <h4 class="panel-title">回答</h4>
   </div>
   <div class="panel-body">
     <div class="row">
@@ -44,21 +49,23 @@
         <% if user_signed_in? %>
         <%= image_tag current_user.thumbnail, class: "img-thumbnail" %>
         <p><%=current_user.try :name%></p>
-        <% else %>
+      <% else %>
         <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
-        <p><small>名無しさん</small></p>
+        <p>
+          <small>名無しさん</small>
+        </p>
         <% end %>
       </div>
       <div class="col-md-11">
         <%= form_with model: @comment, url: comments_path do |f| %>
-          <%= f.hidden_field :post_id %>
-          <%= f.hidden_field :user_id%>
-          <div class="form-group">
-            <%= f.label :body  %><br />
-            <%= f.text_field :body, class: "form-control" %>
-          </div>
-          <hr>
-          <%= f.submit '回答を送信', class: "btn btn-default" %>
+        <%= f.hidden_field :post_id %>
+        <%= f.hidden_field :user_id%>
+        <div class="form-group">
+          <%= f.label :body  %><br/>
+          <%= f.text_field :body, class: "form-control" %>
+        </div>
+        <hr>
+        <%= f.submit '回答を送信', class: "btn btn-default" %>
         <% end %>
       </div>
     </div>
@@ -77,11 +84,13 @@
     <div class="row">
       <div class="col-md-1">
         <% if comment.user.nil? %>
-          <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
-          <p><small>名無しさん</small></p>
-        <% else %>
-          <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
-          <%= link_to comment.user.try(:name), user_path(comment.user)%>
+        <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
+        <p>
+          <small>名無しさん</small>
+        </p>
+      <% else %>
+        <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
+        <%= link_to comment.user.try(:name), user_path(comment.user)%>
         <% end %>
       </div>
       <div class="col-md-11">
@@ -92,13 +101,16 @@
     <hr>
     <div class="row">
       <div class="col-xs-offset-1 col-md-2">
-        <a href="#" align="center"><i class="fa fa-reply fa-2x"></i></a>
+        <a href="#" align="center">
+          <i class="fa fa-reply fa-2x"></i>
+        </a>
       </div>
       <div class="col-xs-offset-1 col-md-2">
-        <a href="#" align="center"><i class="fa fa-thumbs-up fa-2x"></i></a>
+        <a href="#" align="center">
+          <i class="fa fa-thumbs-up fa-2x"></i>
+        </a>
       </div>
-      <div class="col-md-3">
-      </div>
+      <div class="col-md-3"></div>
       <div class="col-md-3">
         <%= comment.created_at %>
       </div>
