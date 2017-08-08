@@ -12,7 +12,7 @@
     <div class="row">
       <div class="col-md-1">
         <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
-        <strong><a href="users/<%=@post.user.id%>"><%=@post.user.name%></a></strong>
+        <strong><%= link_to @post.user.name, user_path(@post.user) %></strong>
       </div>
       <div class="col-md-11">
         <p><%= simple_format(@post.body) %></p>
