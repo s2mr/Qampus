@@ -1,32 +1,27 @@
 <div class="row">
   <div class="col-sm-8 col-sm-offset-2">
     <h2>プロフィール</h2>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">ユーザー</div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-1">
-              <% if @user.thumbnail.nil? %>
-                <% image_tag 'thumbnails/default.png', class: 'img-thumbnail'  %>
-              <% else %>
-                <% image_tag @user.thumbnail, class: 'img-thumbnail' %>
-              <% end %>
-            </div>
-            <div class="col-md-11">
-              <p>
-                ユーザ名：<%= @user.name %>
-              </p>
-              <br>
-              <p>
-                大学名：<%= @user.university_name %>
-              </p>
-              <br>
-              <p>
-                ステータス：<%= @user.status.name %>
-              </p>
-              <br>
-            </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4 class="panel-title">ユーザー</h4></div>
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-md-2">
+            <% if @user.thumbnail.nil? %>
+            <%= image_tag 'thumbnails/default.png', class: 'img-thumbnail', size: '60x60'  %>
+          <% else %>
+            <%= image_tag @user.thumbnail, class: 'img-thumbnail', size: '60x60' %>
+          <% end %>
+          </div>
+          <div class="col-md-10">
+            <p>ユーザ名：<%= @user.name %></p>
+            <br>
+            <p>大学名：<%= @user.university_name %></p>
+            <br>
+            <p>ステータス：<%= @user.status.name %></p>
+            <br>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
