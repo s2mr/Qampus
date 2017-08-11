@@ -44,6 +44,10 @@ body > .container {
   padding-left: 15px;
 }
 
+.glyphicon-heart, .glyphicon-heart-empty {
+  font-size: x-large;
+}
+
 .animation-target {
   -webkit-animation: animation 1000ms linear both;
   animation: animation 1000ms linear both;
