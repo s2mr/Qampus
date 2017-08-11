@@ -4,6 +4,10 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :univs
+
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_comment, through: :likes, source: :comment
   belongs_to :status
 
 

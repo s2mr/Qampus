@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :comments
   resources :posts, except: [:new]
 
-  get 'users/:id' => 'users#show', as: 'user' 
+  get 'users/:id' => 'users#show', as: 'user'
+
+  post   '/like/:comment_id' => 'likes#like',   as: 'like'
+  delete '/like/:comment_id' => 'likes#unlike', as: 'unlike'
 
   root 'univs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

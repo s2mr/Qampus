@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @komento = Comment.where(post_id: params[:id])
     @comments = @post.comments
     @comment = Comment.new(post_id: @post.id, user_id: current_user.try(:id))
   end

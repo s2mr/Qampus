@@ -10,6 +10,8 @@ class CommentsController < ApplicationController
   # GET /comments/1
   # GET /comments/1.json
   def show
+    @comments = @post.comments
+    @comment = Comment.new(post_id: @post.id, user_id: current_user.try(:id))
   end
 
   # GET /comments/new
@@ -69,6 +71,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:post_id, :user_id, :body)
+      params.require(:comment).permit(:id, :post_id, :user_id, :body)
     end
 end

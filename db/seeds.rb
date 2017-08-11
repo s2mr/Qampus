@@ -22,28 +22,29 @@ User.create(name:'mituttu', status_id:2, email: 'test3@test.com', password: 'tes
 User.create(name:'migfd', status_id:2, email: 'test4@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
 
 
-Univ.all.each do |univ|
-  5.times do |i|
-    post1 = Post.new(user_id: 1, univ_id: univ.id, subject: "専門英語I", title: "困ってます part#{i}", body: "全然わからん")
-    post2 = Post.new(user_id: 2, univ_id: univ.id, subject: "専門英語II", title: "困ってます part#{i}", body: "全然わからん")
-    
-    comment1 = post1.comments.build
-    comment1.body = '回答1'
-    comment1.user_id = post1.user_id+1 #回答は自分以外の人がする
-    
-    comment2 = post2.comments.build
-    comment2.body = '回答2'
-    comment2.user_id = post2.user_id+1
-    comment3 = post2.comments.build
-    comment3.body = '回答2'
-    comment3.user_id = nil
-  
-    
-    comment1.save
-    comment2.save
-    comment3.save
-    
-    post1.save
-    post2.save
-  end
-end
+# Univ.all.each do |univ|
+#   5.times do |i|
+#     post1 = Post.new(user_id: 1, univ_id: univ.id, subject: "専門英語I", title: "困ってます part#{i}", body: "全然わからん")
+#     post2 = Post.new(user_id: 2, univ_id: univ.id, subject: "専門英語II", title: "困ってます part#{i}", body: "全然わからん")
+#
+#     comment1 = post1.comments.build
+#     comment1.body = '回答1'
+#     comment1.user_id = post1.user_id+1 #回答は自分以外の人がする
+#
+#     comment2 = post2.comments.build
+#     comment2.body = '回答2'
+#     comment2.user_id = post2.user_id+1
+#
+#     comment3 = post2.comments.build
+#     comment3.body = '回答2'
+#     comment3.user_id = nil
+#
+#
+#     comment1.save
+#     comment2.save
+#     comment3.save
+#
+#     post1.save
+#     post2.save
+#   end
+# end
