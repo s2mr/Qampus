@@ -30,8 +30,9 @@
     <hr>
     <div class="row">
       <div class="col-xs-offset-1 col-md-2">
-        <a href="javascript:void(0)" onclick="show_block();">
+        <a href="javascript:void(0)" onclick="show_block(); return false;">
           <i class="fa fa-reply fa-2x"></i>
+        </a>
         </span>
       </div>
       <div class="col-md-3">
@@ -45,7 +46,8 @@
   </div>
 </div>
 <!-- 回答用フォーム -->
-<div id="hoge" class="panel panel-default animation-target" style="display: none;">
+<div id="hoge" style="display: none">
+  <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">回答</h4>
   </div>
@@ -53,8 +55,8 @@
     <div class="row">
       <div class="col-md-1">
         <% if user_signed_in? %>
-        <%= image_tag current_user.thumbnail, class: "img-thumbnail" %>
-        <p><%=current_user.try :name%></p>
+        <%= link_to image_tag(current_user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(current_user)%>
+        <%= link_to current_user.try(:name), user_path(current_user)%>
       <% else %>
         <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
         <p>
@@ -71,11 +73,22 @@
           <%= f.text_field :body, class: "form-control" %>
         </div>
         <hr>
-        <%= f.submit '回答を送信', class: "btn btn-default" %>
+        <div class="row">
+          <div class="col-md-2">
+            <%= f.submit '回答を送信', class: "btn btn-default" %>
+          </div>
+          <div class="col-md-4">
+            <a href="" onclick="hide_block(); return false;" class="btn btn-default">フォームを閉じる</a>
+          </div>
+          <div class="col-md-6">
+
+          </div>
+        </div>
         <% end %>
       </div>
     </div>
   </div>
+</div>
 </div>
 <hr>
 <br>
@@ -113,7 +126,6 @@
       </div>
       <div class="col-md-3">
       </div>
-      <div class="col-md-3"></div>
       <div class="col-md-3">
         <%= comment.created_at %>
       </div>

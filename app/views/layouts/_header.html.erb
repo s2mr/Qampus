@@ -16,18 +16,17 @@
 
     <script>
     function show_block(){
-      if(document.getElementById("hoge").style.display == ""){
-        document.getElementById("hoge").style.display = "none";
-      }else{
         document.getElementById("hoge").style.display = "";
+        var e = document.getElementById("hoge");
+        e.className = "animation1";
+        e.addEventListener("animationstart", listener, false);
+        e.addEventListener("animationend", listener, false);
+        e.addEventListener("animationiteration", listener, false);
       }
-      var e = document.getElementById("hoge");
-      e.addEventListener("animationstart", listener, false);
-      e.addEventListener("animationend", listener, false);
-      e.addEventListener("animationiteration", listener, false);
-      var e = document.getElementById("hoge");
-      e.className = "slidein";
-      return false;
+
+    function hide_block(){
+        var e = document.getElementById("hoge");
+        document.getElementById("hoge").style.display = "none";
     }
     </script>
     <!-- Collect the nav links, forms, and other content for toggling -->
