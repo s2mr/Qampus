@@ -16,10 +16,10 @@ statuses.each do |status|
   Status.create(name: status)
 end
 
-User.create(name:'mitsuwo', status_id:2, email: 'test1@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
-User.create(name:'kazuo', status_id:2, email: 'test2@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png" )
-User.create(name:'mituttu', status_id:2, email: 'test3@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
-User.create(name:'migfd', status_id:2, email: 'test4@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
+User.create(id:1, name:'mitsuwo', status_id:2, email: 'test1@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
+User.create(id:2, name:'kazuo', status_id:2, email: 'test2@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png" )
+User.create(id:3, name:'mituttu', status_id:2, email: 'test3@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
+User.create(id:4, name:'migfd', status_id:2, email: 'test4@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
 
 
 # Univ.all.each do |univ|

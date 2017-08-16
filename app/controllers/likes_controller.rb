@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :set_variables
+  before_action :set_variables, only: [:like, :unlike]
 
   def like
     like = current_user.likes.new(comment_id: @comment.id)

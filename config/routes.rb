@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post   '/like/:comment_id' => 'likes#like',   as: 'like'
   delete '/like/:comment_id' => 'likes#unlike', as: 'unlike'
 
+  post '/message/:user_id' => 'likes#write', as: 'message'
+
   root 'univs#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
