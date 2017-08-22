@@ -1,5 +1,5 @@
 <div class="like-link" id="like-link-<%= comment.id %>">
-  <% if current_user.likes.find_by(comment_id: comment.id) %>
+  <% if current_user && current_user.likes.find_by(comment_id: comment.id) #TODO この条件で大丈夫か %>
     <%= link_to unlike_path(comment.id), method: :delete, remote: true do %>
       <div class="glyphicon glyphicon-heart" id="heart-<%= comment.id %>">
         <%= comment.likes.count.to_s %>
@@ -7,7 +7,7 @@
     <% end %>
   <% else %>
     <%= link_to like_path(comment.id), method: :post, remote: true do %>
-    <% if comment.user_id != current_user.id %>
+    <% if current_user && comment.user_id != current_user.id #TODO この条件で大丈夫か %>
     <% Message.create(user_id: comment.user_id, body: "#{current_user.name}さんがあなたの回答にいいねしました") %>
     <% end %>
       <div class="glyphicon glyphicon-heart-empty" id="heart-<%= comment.id %>">

@@ -22,4 +22,5 @@
 
 .byebug_history
 /vendor/bundle
-db/schema.rb
+db/schema.rb.idea/
+.idea/
