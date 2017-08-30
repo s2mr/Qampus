@@ -17,6 +17,7 @@ class LikesController < ApplicationController
     @comment = Comment.find(params[:comment_id])
     @id_name = "#like-link-#{@comment.id}"
     @id_heart = "#heart-#{@comment.id}"
+    Message.create(user_id: @comment.user_id, body: "#{current_user.name}さんがあなたの回答にいいねしました")
   end
 
 end
