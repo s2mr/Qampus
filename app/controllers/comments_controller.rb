@@ -27,11 +27,13 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @komento = @comment.post
 
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment.post }
+        Message.create(user_id: @komento.user_id, body: "#{current_user.name}さんがあなたの質問に回答しました")
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
