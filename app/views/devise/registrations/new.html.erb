@@ -57,8 +57,8 @@
             <img src="http://design-ec.com/d/e_others_50/l_e_others_501.png" width="200">
             <% end %>
             <br><br>
-            <%= f.label :thumbnail, "画像URL:" %><br />
-            <%= f.text_field :thumbnail, class: "form-control" %>
+            <%=f.label :image,"ユーザー画像" %>
+            <%= f.file_field :image %>
           </div>
         </div>
       </div>

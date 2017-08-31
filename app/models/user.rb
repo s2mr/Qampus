@@ -14,11 +14,17 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  mount_uploader :image, ImageUploader
+
   private
 
   def if_thumbnail_is_nil_thumbnail_is_random
     if thumbnail == ''
       self.thumbnail = "thumbnails/#{rand(0..9)}.png"
+    else
+    end
+    if image == ""
+      self.image = "thumbnails/#{rand(0..9)}.png"
     else
     end
   end
