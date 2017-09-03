@@ -21,7 +21,6 @@ User.create(id:2, name:'kazuo', status_id:2, email: 'test2@test.com', password: 
 User.create(id:3, name:'mituttu', status_id:2, email: 'test3@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
 User.create(id:4, name:'migfd', status_id:2, email: 'test4@test.com', password: 'testest', thumbnail: "thumbnails/#{rand(0..9)}.png")
 
-
 # Univ.all.each do |univ|
 #   5.times do |i|
 #     post1 = Post.new(user_id: 1, univ_id: univ.id, subject: "専門英語I", title: "困ってます part#{i}", body: "全然わからん")
