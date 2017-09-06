@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   resources :univs
   devise_for :users
   resources :comments
-  resources :posts, except: [:new]
+  resources :posts, except: [:new, :index]
 
   get 'users/:id' => 'users#show', as: 'user'
+  get 'users' => 'users#mypage', as: 'mypage'
 
   post   '/like/:comment_id' => 'likes#like',   as: 'like'
   delete '/like/:comment_id' => 'likes#unlike', as: 'unlike'
@@ -16,5 +17,8 @@ Rails.application.routes.draw do
   post '/message/:user_id' => 'likes#write', as: 'message'
 
   root 'univs#index'
+
+  get '*not_found' => 'application#routing_error'
+  post '*not_found' => 'application#routing_error'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
