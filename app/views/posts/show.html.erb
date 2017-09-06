@@ -61,14 +61,14 @@
   </div>
   <div class="panel-body">
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-1 text-center">
         <% if user_signed_in? %>
           <% if current_user.image.present? %>
             <%= link_to image_tag(current_user.image.to_s, class: "img-thumbnail avatar"), user_path(current_user)%>
           <% else %>
             <%= link_to image_tag(current_user.thumbnail, class: "img-thumbnail avatar"), user_path(current_user)%>
           <% end %>
-          <%= link_to current_user.try(:name), user_path(current_user)%>
+          <strong><%= link_to current_user.try(:name), user_path(current_user)%></strong>
         <% else %>
           <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
         <p>
@@ -113,7 +113,7 @@
   <div class="panel-body">
 
     <div class="row">
-      <div class="col-md-1">
+      <div class="col-md-1 text-center">
         <% if comment.user.nil? %>
           <%= image_tag 'thumbnails/default.png', class: "img-thumbnail" %>
           <p>
@@ -125,7 +125,7 @@
           <% else %>
             <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail avatar"), user_path(comment.user)%>
           <% end %>
-          <%= link_to comment.user.try(:name), user_path(comment.user)%>
+          <strong><%= link_to comment.user.try(:name), user_path(comment.user)%></strong>
         <% end %>
       </div>
       <div class="col-md-11">
