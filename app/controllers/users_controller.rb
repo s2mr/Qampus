@@ -4,8 +4,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def my_page
+  def mypage
+    if user_signed_in?
+      user = current_user
+    end
 
+    @posts = Post.where(user_id: user.id)
   end
 
 end

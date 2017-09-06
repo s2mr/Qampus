@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <h2>自分の質問</h2>
+    <hr>
+    <% @posts.each do |post| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-8"><h5 class="panel-title"><%= link_to post.title, post_path(post) %></h5></div>
+              <div class="col-md-2"><h5 class="panel-title text-right"><%=post.subject%></h5></div>
+              <div class="col-md-2"><h5 class="panel-title">コメント<strong><%=post.comments.size%></strong>件</h5></div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-2">
+                <%= link_to image_tag(post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(post.user)%>
+                <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+              </div>
+              <div class="col-md-10">
+                <p><%= post.body %></p>
+                <br>
+                <p><small>投稿日時：<%= post.created_at %></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
+    <br><br>
+  </div>
+</div>
