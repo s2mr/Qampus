@@ -8,4 +8,9 @@
 <% end %>
 <hr>
 <h3>あなたの大学が見つかりませんか？</h3>
-<%= link_to '新しく大学を登録する', new_univ_path, class: 'btn btn-default' %>
+<% if user_signed_in? %>
+  <%= link_to '新しく大学を登録する', new_univ_path, class: 'btn btn-default' %>
+<% else %>
+  <p>ログインすることで新しく大学を登録できます</p>
+  <%= link_to 'ログインする', new_user_session_path, class: 'btn btn-default' %>
+<% end %>
