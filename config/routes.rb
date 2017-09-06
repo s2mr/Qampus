@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :univs
   devise_for :users
   resources :comments
-  resources :posts, except: [:new]
+  resources :posts, except: [:new, :index]
 
   get 'users/:id' => 'users#show', as: 'user'
 
