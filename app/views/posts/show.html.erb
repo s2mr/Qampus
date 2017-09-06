@@ -21,9 +21,9 @@
     <div class="row">
       <div class="col-md-1">
         <% if @post.user.image.present? %>
-          <%= link_to image_tag(@post.user.image.to_s, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
+          <%= link_to image_tag(@post.user.image.to_s, class: "img-thumbnail avatar"), user_path(@post.user) %>
         <% else %>
-          <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(@post.user) %>
+          <%= link_to image_tag(@post.user.thumbnail, class: "img-thumbnail avatar"), user_path(@post.user) %>
         <% end %>
         <strong><%= link_to @post.user.name, user_path(@post.user) %></strong>
       </div>
@@ -60,9 +60,9 @@
       <div class="col-md-1">
         <% if user_signed_in? %>
           <% if current_user.image.present? %>
-            <%= link_to image_tag(current_user.image.to_s, class: "img-thumbnail", size: '60x60'), user_path(current_user)%>
+            <%= link_to image_tag(current_user.image.to_s, class: "img-thumbnail avatar"), user_path(current_user)%>
           <% else %>
-            <%= link_to image_tag(current_user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(current_user)%>
+            <%= link_to image_tag(current_user.thumbnail, class: "img-thumbnail avatar"), user_path(current_user)%>
           <% end %>
           <%= link_to current_user.try(:name), user_path(current_user)%>
         <% else %>
@@ -117,9 +117,9 @@
           </p>
         <% else %>
           <% if comment.user.image.present? %>
-            <%= link_to image_tag(comment.user.image.to_s, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
+            <%= link_to image_tag(comment.user.image.to_s, class: "img-thumbnail avatar"), user_path(comment.user)%>
           <% else %>
-            <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail", size: '60x60'), user_path(comment.user)%>
+            <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail avatar"), user_path(comment.user)%>
           <% end %>
           <%= link_to comment.user.try(:name), user_path(comment.user)%>
         <% end %>

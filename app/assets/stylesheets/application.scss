@@ -118,7 +118,7 @@ body > .container {
   animation: animation2 1000ms linear both;
 }
 
-@-webkit-keyframes animation2 { 
+@-webkit-keyframes animation2 {
   0% { -webkit-transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   2.06% { -webkit-transform: matrix3d(0.833, 0, 0, 0, 0, 1.172, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.833, 0, 0, 0, 0, 1.172, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
   4.13% { -webkit-transform: matrix3d(0.657, 0, 0, 0, 0, 1.243, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); transform: matrix3d(0.657, 0, 0, 0, 0, 1.243, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }
@@ -217,7 +217,16 @@ body > .container {
         z-index: 3;
     }
 
-
+.avatar {
+  background-color: #F2F2F2 !important;
+  box-shadow: 0 0 0 2px #DBDBDB !important;
+  border-radius: 50% !important;
+  display: inline-block !important;
+  overflow: hidden !important;
+  vertical-align: middle !important;
+  width: 60px !important;
+  height: 60px !important;
+}
 
 
 
