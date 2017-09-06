@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :posts, except: [:new, :index]
 
   get 'users/:id' => 'users#show', as: 'user'
+  get 'users' => 'users#mypage', as: 'mypage'
 
   post   '/like/:comment_id' => 'likes#like',   as: 'like'
   delete '/like/:comment_id' => 'likes#unlike', as: 'unlike'
