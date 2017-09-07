@@ -6,11 +6,12 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-md-2">
-            <% if @user.thumbnail.nil? %>
-            <%= image_tag 'thumbnails/default.png', class: 'img-thumbnail', size: '60x60'  %>
-          <% else %>
-            <%= image_tag @user.thumbnail, class: 'img-thumbnail', size: '60x60' %>
-          <% end %>
+            <% if @user.image.present? %>
+              <%= image_tag @user.image.to_s, class: "img-thumbnail avatar" %>
+            <% else %>
+              <%= image_tag @user.thumbnail, class: "img-thumbnail avatar" %>
+            <% end %>
+
           </div>
           <div class="col-md-10">
             <p>ユーザ名：<%= @user.name %></p>
