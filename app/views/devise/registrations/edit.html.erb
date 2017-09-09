@@ -1,75 +1,79 @@
 <div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
     <h2>ユーザー編集</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put}) do |f| %>
       <%= devise_error_messages! %>
-      <div class="panel panel-default">
-        <div class="panel-heading">プロフィール画像</div>
-        <div class="panel-body">
-          <div class="form-group">
-            <% if current_user.image.present? %>
-            <%= image_tag current_user.image.to_s, size: '200x200' %>
-            <% elsif current_user.thumbnail.present? %>
-            <%= image_tag current_user.thumbnail, size: '200x200'%>
-            <% else %>
-            <%= image_tag 'thumbnails/default.png', size: '200x200'%>
-            <% end %>
-            <br>
-            <br>
-            <%= f.file_field :image %><br>
+      <div class="row">
+        <div class="col-md-3">
+          <div class="panel panel-default">
+            <div class="panel-heading">プロフィール画像</div>
+            <div class="panel-body">
+              <div class="form-group">
+                <% if current_user.image.present? %>
+                <%= image_tag current_user.image.to_s, size: '200x200' %>
+                <% elsif current_user.thumbnail.present? %>
+                <%= image_tag current_user.thumbnail, size: '200x200'%>
+                <% else %>
+                <%= image_tag 'thumbnails/default.png', size: '200x200'%>
+                <% end %>
+                <br>
+                <br>
+                <%= f.file_field :image %><br>
+              </div>
+            </div>
+          </div>
+          <%= link_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に退会しますか？" }, method: :delete %>
+        </div>
+        <div class="col-md-9">
+          <div class="panel panel-default">
+            <div class="panel-heading">ユーザー</div>
+            <div class="panel-body">
+
+              <div class="form-group"><br>
+                <%= f.label :name, "ユーザ名" %>
+                <%= f.text_field :name, class: "form-control" %>
+              </div>
+              <div class="form-group"><br>
+                <%= f.label :status_id, "ステータス" %>
+                <%= f.collection_select :status_id, Status.all, :id, :name, { include_blank: "ステータスを選択してください" }, { class: "form-control" } %>
+              </div>
+              <div class="form-group"><br>
+                <%= f.label :university_name, "大学名" %>
+                <%= f.text_field :university_name, class: "form-control" %>
+              </div>
+              <div class="form-group"><br>
+                <%= f.label :email, "電子メール" %>
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+              <% end %>
+
+              <div class="form-group"><br>
+                <%= f.label :password, "新しいパスワード" %> <i>（入力しない限り変更しません）</i>
+                <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+              </div>
+
+              <div class="form-group"><br>
+                <%= f.label :password_confirmation, "新しいパスワード（再入力）" %>
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
+              </div>
+
+              <div class="form-group"><br>
+                <%= f.label :current_password, "現在のパスワード" %> <i>（設定を変更する場合は、現在のパスワード入力が必要です）</i>
+                <%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
+              </div>
+
+              <div class="actions text-center">
+                <br><br>
+                <%= f.submit "更新する", class: "btn btn-danger btn-lg" %>
+                <br>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">ユーザー</div>
-        <div class="panel-body">
-          <div class="form-group">
-            <%= f.label :name, "ユーザ名" %><br />
-            <%= f.text_field :name, class: "form-control" %>
-    　　　</div>
-    　　　<div class="form-group">
-      　　　<%= f.label :status_id, "ステータス" %><br />
-      　　　<%= f.collection_select :status_id, Status.all, :id, :name, { include_blank: "ステータスを選択してください" }, { class: "form-control" } %>
-    　　　</div>
-    　　　<div class="form-group">
-      　　　<%= f.label :university_name, "大学名" %><br />
-      　　　<%= f.text_field :university_name, class: "form-control" %>
-    　　　</div>
-    　　　<div class="form-group">
-      　　　<%= f.label :email, "電子メール" %><br />
-      　　　<%= f.email_field :email, class: "form-control" %>
-    　　　</div>
 
-    　　　<% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      　　　<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-    　　　<% end %>
-    　　　<div class="form-group">
-      　　　<%= f.label :password, "新しいパスワード" %> <i>（入力しない限り変更しません）</i><br />
-      　　　<%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    　　　</div>
-
-    　　　<div class="form-group">
-      　　　<%= f.label :password_confirmation, "新しいパスワード（再入力）" %><br />
-      　　　<%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-    　　　</div>
-
-    　　　<div class="form-group">
-      　　　<%= f.label :current_password, "現在のパスワード" %> <i>（設定を変更する場合は、現在のパスワード入力が必要です）</i><br />
-      　　　<%= f.password_field :current_password, autocomplete: "off", class: "form-control" %>
-    　　　</div>
-  　　　</div>
-　　　</div>
-
-    <div class="actions">
-        <%= f.submit "更新する", class: "btn btn-default" %>
-        <br>
-  　　</div>
     <% end %>
-
-    <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "本当に退会しますか？" }, method: :delete, class: "btn btn-default" %>
-    <br>
-
-    <%= link_to "戻る", :back, class: "btn btn-default" %>
-  </div>
 </div>

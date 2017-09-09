@@ -33,7 +33,11 @@ class CommentsController < ApplicationController
       if @comment.save
         format.html { redirect_to @comment.post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment.post }
-        Message.create(user_id: @komento.user_id, body: "#{current_user.name}さんがあなたの質問に回答しました")
+        if user_signed_in?
+          Message.create(user_id: @komento.user_id, body: "#{current_user.name}さんがあなたの質問に回答しました")
+        else
+          Message.create(user_id: @komento.user_id, body: "名無しさんがあなたの質問に回答しました")
+        end
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
