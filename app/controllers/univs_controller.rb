@@ -4,7 +4,7 @@ class UnivsController < ApplicationController
   # GET /univs
   # GET /univs.json
   # 大学検索画面（トップページ）
-  def index    
+  def index
     @q = Univ.ransack(params[:q])
     @univs = @q.result
   end
@@ -15,12 +15,12 @@ class UnivsController < ApplicationController
     @univs = @q.result
     @query = params[:q][:name_cont]
   end
-  
+
   # GET /univs/1
   # GET /univs/1.json
   # 大学トップページ
   def show
-    @q = @univ.posts.ransack(params[:q]) 
+    @q = @univ.posts.ransack(params[:q])
     @posts = @univ.posts.order('created_at DESC')
     @subjects = @univ.posts.pluck(:subject).uniq
   end
