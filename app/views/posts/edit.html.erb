@@ -2,5 +2,6 @@
   <div class="col-md-8 col-md-offset-2">
     <h1>質問を編集</h1>
     <%= render 'form', post: @post %>
+    <%= link_to '質問を削除', post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' } %>
   </div>
 </div>
