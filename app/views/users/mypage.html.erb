@@ -13,7 +13,7 @@
           </div>
           <div class="panel-body">
             <div class="row">
-              <div class="col-md-2 text-center">
+              <div class="col-md-2" style="text-align:center;">
                 <div>
                   <% if post.user.image.present? %>
                     <%= link_to image_tag(post.user.image.to_s, class: "img-thumbnail avatar"), user_path(post.user) %>
@@ -21,7 +21,7 @@
                     <%= link_to image_tag(post.user.thumbnail, class: "img-thumbnail avatar"), user_path(post.user) %>
                   <% end %>
                 </div>
-                <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
+                <div><strong><%= link_to post.user.name, user_path(post.user.id) %></strong></div>
               </div>
               <div class="col-md-10">
                 <p><%= post.body %></p>
