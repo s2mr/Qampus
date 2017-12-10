@@ -19,11 +19,11 @@ class User < ApplicationRecord
   private
 
   def if_thumbnail_is_nil_thumbnail_is_random
-    if thumbnail == ''
+    if thumbnail.nil?
       self.thumbnail = "thumbnails/#{rand(0..9)}.png"
     else
     end
-    if image == ""
+    if image.nil?
       self.image = "thumbnails/#{rand(0..9)}.png"
     else
     end

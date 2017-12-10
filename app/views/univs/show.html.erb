@@ -12,7 +12,11 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <div class="row">
-            <div class="col-md-6"><h5 class="panel-title"><%= link_to post.title, post_path(post) %></h5></div>
+            <% if post.title.empty? %>
+            <div class="col-md-6"><h5 class="panel-title"><%= link_to post.body.truncate(10), post_path(post) %></h5></div>
+            <% else %>
+            <div class="col-md-6"><h5 class="panel-title"><%= link_to post.title.truncate(10), post_path(post) %></h5></div>
+            <% end %>
             <div class="col-md-4"><h5 class="panel-title text-right"><%=post.subject%></h5></div>
             <div class="col-md-2"><h5 class="panel-title"><i class="fa fa-comments" aria-hidden="true"></i><strong><%=post.comments.size%></strong>件</h5></div>
           </div>
@@ -30,7 +34,7 @@
              <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
            </div>
            <div class="col-md-10">
-             <p><%= post.body %></p>
+             <p><%= post.body.truncate(50) %></p>
              <br>
              <p><small>投稿日時：<%= post.created_at %></small></p>
            </div>

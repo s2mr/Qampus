@@ -18,8 +18,12 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" width="80px"><i class="fa fa-bell-o"></i></a>
           <ul class="dropdown-menu message-box" role="tree">
-            <% Message.order(:created_at).reverse_order.where(user_id: current_user.id).first(6).each do |message| %>
-            <li class="message-line"><%= message.body %></li>
+            <% if Message.where(user_id: current_user.id).exists? %>
+              <% Message.order(:created_at).reverse_order.where(user_id: current_user.id).first(6).each do |message| %>
+              <li class="message-line"><%= message.body %></li>
+              <% end %>
+            <% else %>
+              <li class="message-line"><p>メッセージがありません</p></li>
             <% end %>
             <svg class="drop-icon" style="right: 41px;">
               <path d="M0,10 20,10 10,0z" class="fill-white"></path>
