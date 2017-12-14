@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#show', as: 'user'
   get 'users' => 'users#mypage', as: 'mypage'
 
-  post   '/like/:comment_id' => 'likes#like',   as: 'like'
-  delete '/like/:comment_id' => 'likes#unlike', as: 'unlike'
+  post   '/like/:comment_id' => 'likes#like_comment',   as: 'like_comment'
+  delete '/like/:comment_id' => 'likes#unlike_comment', as: 'unlike_comment'
+
+  post   '/like/:post_id' => 'likes#like_post',   as: 'like_post'
+  delete '/like/:post_id' => 'likes#unlike_post', as: 'unlike_post'
 
   post '/message/:user_id' => 'likes#write', as: 'message'
 

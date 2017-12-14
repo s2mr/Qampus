@@ -28,6 +28,7 @@ class PostsController < ApplicationController
 
     @is_own_post = false
 
+
     if user_signed_in? && @post.user.id == current_user.id
       @is_own_post = true
     end
