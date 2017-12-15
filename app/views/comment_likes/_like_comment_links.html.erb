@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+    <div class="like-comment-link" id="like-comment-link-<%= comment.id %>">
+      <% if current_user.likes.find_by(comment_id: comment.id) #TODO この条件で大丈夫か %>
+        <%= link_to unlike_comment_path(comment.id), method: :delete, remote: true do %>
+        <div class="glyphicon glyphicon-heart" id="comment-heart-<%= comment.id %>">
+          <%= comment.likes.count.to_s %>
+        </div>
+        <% end %>
+      <% else %>
+        <%= link_to like_comment_path(comment.id), method: :post, remote: true do %>
+        <div class="glyphicon glyphicon-heart-empty" id="comment-heart-<%= comment.id %>">
+          <%= comment.likes.count.to_s %>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+
+<% else %>
+  <div class="glyphicon glyphicon-heart-empty" >
+    <%= comment.likes.count.to_s %>
+<% end %>

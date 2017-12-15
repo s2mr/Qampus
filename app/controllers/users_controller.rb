@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     end
 
     @posts = Post.where(user_id: user.id)
+    # @favs = Post.
   end
 
 end
