@@ -5,12 +5,12 @@ class UsersController < ApplicationController
   end
 
   def mypage
-    if user_signed_in?
-      user = current_user
+    @posts = Post.where(user_id: current_user.id)
+    if Like.present?
+      @user_like = Like.where(user_id: current_user.id)
+      @post_like = Like.where(post_id: @user_like.post_id)
+      @liked_posts = @user_like.post
     end
-
-    @posts = Post.where(user_id: user.id)
-    # @favs = Post.
   end
 
 end

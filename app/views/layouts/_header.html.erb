@@ -38,7 +38,8 @@
 
         <% if user_signed_in? %>
         <li>
-          <a href="<%= mypage_path %>"><%= current_user.name %></a></li>
+          <%= link_to current_user.name, mypage_path(current_user.id) %>
+        </li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
