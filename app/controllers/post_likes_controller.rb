@@ -2,12 +2,12 @@ class PostLikesController < ApplicationController
   before_action :set_post_variables, only: [:like_post, :unlike_post]
 
   def like_post
-    like = current_user.likes.new(post_id: @post.id)
+    like = current_user.likes.new(user_id: current_user.id, post_id: @post.id)
     like.save
   end
 
   def unlike_post
-    like = current_user.likes.find_by(post_id: @post.id)
+    like = current_user.likes.find_by(user_id: current_user.id, post_id: @post.id)
     like.destroy
   end
 

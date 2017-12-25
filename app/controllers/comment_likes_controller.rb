@@ -2,12 +2,12 @@ class CommentLikesController < ApplicationController
   before_action :set_comment_variables, only: [:like_comment, :unlike_comment]
 
   def like_comment
-    like = current_user.likes.new(comment_id: @comment.id)
+    like = current_user.likes.new(user_id: current_user.id, comment_id: @comment.id)
     like.save
   end
 
   def unlike_comment
-    like = current_user.likes.find_by(comment_id: @comment.id)
+    like = current_user.likes.find_by(user_id: current_user.id, comment_id: @comment.id)
     like.destroy
   end
 
