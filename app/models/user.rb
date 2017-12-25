@@ -2,12 +2,12 @@ class User < ApplicationRecord
 
   before_create :if_thumbnail_is_nil_thumbnail_is_random, on: :create
 
-  has_many :posts
+  has_many :likes, dependent: :destroy
+  has_many :posts, dependent: :destroy
+  has_many :posts, through: :likes
   has_many :univs
 
   has_many :comments, dependent: :destroy
-  has_many :likes, dependent: :destroy
-  has_many :like_comment, through: :likes, source: :comment
   belongs_to :status
 
 

@@ -35,5 +35,35 @@
     <br><br>
     <hr>
     <h2>お気に入りした質問</h2>
+    <% current_user.posts.each do |post| %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-md-8"><h5 class="panel-title"><%= link_to post.title, post_path(post) %></h5></div>
+              <div class="col-md-2"><h5 class="panel-title text-right"><%=post.subject%></h5></div>
+              <div class="col-md-2"><h5 class="panel-title">コメント<strong><%=post.comments.size%></strong>件</h5></div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <div class="row">
+              <div class="col-md-2" style="text-align:center;">
+                <div>
+                  <% if post.user.image.present? %>
+                    <%= link_to image_tag(post.user.image.to_s, class: "img-thumbnail avatar"), user_path(post.user) %>
+                  <% else %>
+                    <%= link_to image_tag(post.user.thumbnail, class: "img-thumbnail avatar"), user_path(post.user) %>
+                  <% end %>
+                </div>
+                <div><strong><%= link_to post.user.name, user_path(post.user.id) %></strong></div>
+              </div>
+              <div class="col-md-10">
+                <p><%= post.body %></p>
+                <br>
+                <p><small>投稿日時：<%= post.created_at %></small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% end %>
   </div>
 </div>
