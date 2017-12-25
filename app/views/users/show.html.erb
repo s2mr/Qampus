@@ -8,8 +8,10 @@
           <div class="col-md-2">
             <% if @user.thumbnail.nil? %>
             <%= image_tag 'thumbnails/default.png', class: 'img-thumbnail avatar'  %>
-          <% else %>
+            <% elsif @user.image.nil? %>
             <%= image_tag @user.thumbnail, class: 'img-thumbnail avatar' %>
+            <% else %>
+            <%= image_tag @user.image, class: 'img-thumbnail avatar' %>
           <% end %>
           </div>
           <div class="col-md-10">
@@ -17,7 +19,7 @@
             <br>
             <p>大学名：<%= @user.university_name %></p>
             <br>
-            <p>ステータス：<%= @user.status.name %></p>
+            <p>ステータス：<%= @user.status %></p>
             <br>
           </div>
         </div>

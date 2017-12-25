@@ -25,6 +25,7 @@ class PostsController < ApplicationController
     @komento = Comment.where(post_id: params[:id])
     @comments = @post.comments
     @comment = Comment.new(post_id: @post.id, user_id: current_user.try(:id))
+    @like = Like.where(user_id: current_user.id)
 
     @is_own_post = false
 

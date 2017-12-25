@@ -14,7 +14,13 @@
           <div class="panel-body">
             <div class="row">
               <div class="col-md-2" style="text-align:center;">
-                <div><%= link_to image_tag(post.user.thumbnail, class: "img-thumbnail avatar"), user_path(post.user)%></div>
+                <div>
+                  <% if post.user.image.present? %>
+                    <%= link_to image_tag(post.user.image.to_s, class: "img-thumbnail avatar"), user_path(post.user) %>
+                  <% else %>
+                    <%= link_to image_tag(post.user.thumbnail, class: "img-thumbnail avatar"), user_path(post.user) %>
+                  <% end %>
+                </div>
                 <div><strong><%= link_to post.user.name, user_path(post.user.id) %></strong></div>
               </div>
               <div class="col-md-10">
@@ -27,31 +33,7 @@
         </div>
     <% end %>
     <br><br>
-    <h2>いいねした質問</h2>
     <hr>
-    <% @liked_posts.each do |liked_post| %>
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <div class="row">
-              <div class="col-md-8"><h5 class="panel-title"><%= link_to liked_post.title, post_path(liked_post) %></h5></div>
-              <div class="col-md-2"><h5 class="panel-title text-right"><%= liked_post.subject%></h5></div>
-              <div class="col-md-2"><h5 class="panel-title">コメント<strong><%= liked_post.comments.size%></strong>件</h5></div>
-            </div>
-          </div>
-          <div class="panel-body">
-            <div class="row">
-              <div class="col-md-2" style="text-align:center;">
-                <div><%= link_to image_tag(liked_post.user.thumbnail, class: "img-thumbnail avatar"), user_path(liked_post.user)%></div>
-                <div><strong><%= link_to liked_post.user.name, user_path(liked_post.user.id) %></strong></div>
-              </div>
-              <div class="col-md-10">
-                <p><%= liked_post.body %></p>
-                <br>
-                <p><small>投稿日時：<%= liked_post.created_at %></small></p>
-              </div>
-            </div>
-          </div>
-        </div>
-    <% end %>
+    <h2>お気に入りした質問</h2>
   </div>
 </div>
