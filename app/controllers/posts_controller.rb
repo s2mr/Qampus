@@ -25,12 +25,12 @@ class PostsController < ApplicationController
     @komento = Comment.where(post_id: params[:id])
     @comments = @post.comments
     @comment = Comment.new(post_id: @post.id, user_id: current_user.try(:id))
-    @like = Like.where(user_id: current_user.id)
-
     @is_own_post = false
-
-    if user_signed_in? && @post.user.id == current_user.id
-      @is_own_post = true
+    if user_signed_in?
+      @like = Like.where(user_id: current_user.id)
+      if @post.user.id == current_user.id
+        @is_own_post = true
+      end
     end
   end
 
