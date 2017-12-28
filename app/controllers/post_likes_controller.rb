@@ -18,7 +18,7 @@ class PostLikesController < ApplicationController
     @id_post_name = "#like-post-link-#{@post.id}"
     @id_post_heart = "#post-heart-#{@post.id}"
     if current_user.id != @post.user_id
-    Message.create(user_id: @post.user_id, body: "#{current_user.name}さんがあなたの質問にいいねしました")
+    Message.create(user_id: @post.user_id, post_id: params[:post_id], body: "#{current_user.name}さんがあなたの質問にいいねしました")
     end
   end
 
