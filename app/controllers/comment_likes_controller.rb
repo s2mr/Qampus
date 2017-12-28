@@ -18,7 +18,7 @@ class CommentLikesController < ApplicationController
     @id_comment_name = "#like-comment-link-#{@comment.id}"
     @id_comment_heart = "#comment-heart-#{@comment.id}"
     if current_user.id != @comment.user_id
-    Message.create(user_id: @comment.user_id, post_id: params[:id], body: "#{current_user.name}さんがあなたの回答にいいねしました")
+    Message.create(user_id: @comment.user_id, post_id: @comment.post_id, body: "#{current_user.name}さんがあなたの回答にいいねしました")
     end
   end
 

@@ -235,9 +235,11 @@ body > .container {
     min-width: 282px !important;
     max-width: 460px !important;
     min-height: 60px !important;
+    max-height: 300px !important;
     position: absolute !important;
     right: -30px !important;
     top: 60px !important;
+    overflow-x: scroll !important;
 }
 
 .message-line {
@@ -262,6 +264,12 @@ body > .container {
 .fill-complete {
   stroke: #DBDBDB !important;
   fill: transparent !important;
+}
+
+.mypage-box {
+  min-height: 100px !important;
+  max-height: 400px !important;
+  overflow-x: scroll !important;
 }
 
 
