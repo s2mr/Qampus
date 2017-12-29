@@ -1,29 +1,51 @@
-<div class="row">
-  <div class="col-md-8">
-    <h1><strong><%= @univ.name %></strong></h1>
+<div class="box-max">
+  <h1 style="float:left">
+    <strong><%= @univ.name %></strong>
+  </h1>
+  <div style="float:right">
+    <%= search_form_for @q, url:search_post_path, local: true, class: 'form-inline' do |f| %>
+      <%= f.hidden_field :univ, value: @univ%>
+      <%= f.search_field :subject_cont, class: "form-control input-sm", placeholder: '科目名で検索' %>  <%= f.submit "検索", class: "btn btn-default" %>
+    <% end%>
+  </div>
+</div>
+<div class="row" style="clear:both;">
+  <div class="col-md-8 box-max">
+
     <br>
-      <h2>最近の質問　　　　　　　　　　　　　　　　
+    <div class="box-max" style="clear:both;">
+      <h2 style="float:left">最近の質問</h2>
+      <div style="float:right">
         <% if user_signed_in? %>
           <%= link_to '質問する', new_post_path(@univ.id), class: 'btn btn-primary' %>
         <% end %>
-      </h2>
+      </div>　　　
+    </div>　　　　　　　　　
     <hr>
     <% @posts.each do |post| %>
       <div class="panel panel-default">
         <div class="panel-heading">
-          <div class="row">
+          <div class="panel-style">
             <% if post.title.empty? %>
-            <div class="col-md-6"><h5 class="panel-title"><%= link_to post.body.truncate(10), post_path(post) %></h5></div>
+              <div>
+                <h5 class="panel-title panel-head-title"><%= link_to post.body.truncate(10), post_path(post) %></h5>
+              </div>
             <% else %>
-            <div class="col-md-6"><h5 class="panel-title"><%= link_to post.title.truncate(10), post_path(post) %></h5></div>
+              <div>
+                <h5 class="panel-title panel-head-title"><%= link_to post.title.truncate(10), post_path(post) %></h5>
+              </div>
             <% end %>
-            <div class="col-md-4"><h5 class="panel-title text-right"><%=post.subject%></h5></div>
-            <div class="col-md-2"><h5 class="panel-title"><i class="fa fa-comments" aria-hidden="true"></i><strong><%=post.comments.size%></strong>件</h5></div>
+            <div class="panel-head-subject">
+              <h5 class="panel-title" style="float:left"><%=post.subject%></h5>
+            </div>
+            <div class="panel-head-icon">
+              <h5 class="panel-title" style="float:left"><i class="fa fa-comments" aria-hidden="true"></i><strong><%=post.comments.size%></strong>件</h5>
+            </div>
           </div>
         </div>
         <div class="panel-body">
-         <div class="row">
-           <div class="col-md-2" style="text-align:center;">
+         <div class="panel-style">
+           <div class="panel-body-image">
              <div>
                <%= link_to image_tag(post.user.thumbnail, class: "img-thumbnail avatar"), user_path(post.user)%>
              </div>
@@ -31,7 +53,7 @@
                <strong><%= link_to post.user.name, user_path(post.user.id) %></strong>
              </div>
            </div>
-           <div class="col-md-10">
+           <div class="panel-body-body">
              <p><%= post.body.truncate(50) %></p>
              <br>
              <p><small>投稿日時：<%= post.created_at %></small></p>
@@ -45,10 +67,6 @@
     </div>
     <div class="col-md-4">
       <br>
-      <%= search_form_for @q, url:search_post_path, local: true, class: 'form-inline' do |f| %>
-        <%= f.hidden_field :univ, value: @univ%>
-        <%= f.search_field :subject_cont, class: "form-control input-sm", placeholder: '科目名で検索！' %>  <%= f.submit "検索", class: "btn btn-default" %>
-      <% end%>
         <br><br><br><br><br><br><br>
         <div class="panel panel-default">
           <div class="panel-heading">

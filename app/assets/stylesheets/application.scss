@@ -4,6 +4,41 @@ html,  body {
   height: 100%;
 }
 
+.box-max {
+  width: 100%;
+}
+
+.panel-style {
+  padding: 0;
+  display: table;
+  width: 100%;
+}
+.panel-head-title {
+  display: table-cell;
+  vertical-align: middle;
+  width: 70%;
+}
+.panel-head-subject {
+  display: table-cell;
+  vertical-align: middle;
+  width: 15%;
+}
+.panel-head-icon {
+  display: table-cell;
+  vertical-align: middle;
+  width: 15%;
+}
+.panel-body-image {
+  display: table-cell;
+  vertical-align: middle;
+  width: 20%;
+}
+.panel-body-body {
+  display: table-cell;
+  vertical-align: middle;
+  width: 80%
+}
+
 
 .search {
   border:none;
