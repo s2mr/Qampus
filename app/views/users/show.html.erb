@@ -4,8 +4,8 @@
     <div class="panel panel-default">
       <div class="panel-heading"><h4 class="panel-title">ユーザー</h4></div>
       <div class="panel-body">
-        <div class="row">
-          <div class="col-md-2">
+        <div class="panel-style">
+          <div class="panel-body-image">
             <% if @user.image.blank? %>
               <% if @user.thumbnail.blank? %>
                 <%= image_tag 'thumbnails/default.png', class: 'img-thumbnail avatar'  %>
@@ -15,15 +15,13 @@
             <% else %>
               <%= image_tag @user.image, class: 'img-thumbnail avatar' %>
             <% end %>
-
           </div>
-          <div class="col-md-10">
-            <p>ユーザ名：<%= @user.name %></p>
-            <br>
-            <p>大学名：<%= @user.university_name %></p>
-            <br>
-            <p>ステータス：<%= @user.status.name %></p>
-            <br>
+          <div class="panel-body-body">
+            <br><p>ユーザ名　　：  <%= @user.name %></p>
+            <% unless @user.university_name.nil? %>
+              <br><p>大学名　　　：  <%= @user.university_name %></p>
+            <% end %>
+            <br><p>ステータス　：  <%= @user.status.name %></p>
           </div>
         </div>
       </div>
