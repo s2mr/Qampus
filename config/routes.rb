@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :univs
   devise_for :users
   resources :comments
-  resources :posts, except: [:new, :index] 
+  resources :posts, except: [:new, :index]
 
   get 'users/:id' => 'users#show', as: 'user'
   get 'users' => 'users#mypage', as: 'mypage'
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   post   '/post_likes/:post_id' => 'post_likes#like_post',   as: 'like_post'
   delete '/post_likes/:post_id' => 'post_likes#unlike_post', as: 'unlike_post'
 
-  post '/message/:user_id' => 'likes#write', as: 'message'
+  delete '/layouts/:id' => 'messages#delete_message', as: 'delete_message'
 
   root 'univs#index'
 

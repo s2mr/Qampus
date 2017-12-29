@@ -20,7 +20,9 @@
           <ul class="dropdown-menu message-box" role="tree" >
             <% if Message.where(user_id: current_user.id).exists? %>
               <% Message.order(:created_at).reverse_order.where(user_id: current_user.id).each do |message| %>
-              <li class="message-line"><%= link_to message.body, post_path(id: message.post_id) %></li>
+                <li class="message-line">
+                  <%= link_to message.body, delete_message_path(id: message.post_id), method: :delete %>
+                </li>
               <% end %>
             <% else %>
               <li class="message-line"><p>メッセージがありません</p></li>
