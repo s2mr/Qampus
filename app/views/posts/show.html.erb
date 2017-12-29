@@ -7,23 +7,23 @@
 <!-- 質問 -->
 <div class="panel panel-default">
   <div class="panel-heading">
-    <div class="row">
-      <h4 class="panel-title">
-        <div class="col-xs-10">
-          <%= @post.title %>
-            (<%=@post.subject%>)
-        </div>
-        <div class="col-xs-2">
-          <% if @is_own_post%>
-          <%= link_to '質問を編集', edit_post_path(@post), class: "btn btn-default" %>
-          <% end %>
-        </div>
+    <div class="panel-style">
+      <h3 class="panel-title panel-head-title">
+        <%= @post.title %>
+      </h3>
+      <h4 class="panel-head-subject">
+        <%=@post.subject%>
       </h4>
+      <div class="panel-head-icon">
+        <% if @is_own_post%>
+          <%= link_to '質問を編集', edit_post_path(@post), class: "btn btn-default" %>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2" style="text-align:center;">
+    <div class="panel-style">
+      <div class="panel-body-image">
         <div>
           <% if @post.user.image.present? %>
             <%= link_to image_tag(@post.user.image.to_s, class: "img-thumbnail avatar"), user_path(@post.user) %>
@@ -35,24 +35,21 @@
           <strong><%= link_to @post.user.name, user_path(@post.user) %></strong>
         </div>
       </div>
-      <div class="col-md-10">
+      <div class="panel-body-body">
         <p><%= simple_format(@post.body) %></p>
       </div>
     </div>
     <hr>
-    <div class="row">
-      <div class="col-xs-offset-1 col-md-2">
+    <div class="panel-style">
+      <div class="panel-body-image">
         <a href="javascript:void(0)" onclick="show_block(); return false;">
           <i class="fa fa-reply fa-2x"></i>
         </a>
-        </span>
       </div>
-      <div class="col-md-3">
+      <div class="panel-fav">
         <%= render partial: 'posts/posts', locals: { post: @post } %>
       </div>
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-3">
+      <div class="panel-date">
         <%= @post.created_at %>
       </div>
     </div>
@@ -65,8 +62,8 @@
     <h4 class="panel-title">回答</h4>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-md-2" style="text-align:center;">
+    <div class="panel-style">
+      <div class="panel-body-image">
         <% if user_signed_in? %>
           <div>
             <% if current_user.image.present? %>
@@ -85,26 +82,23 @@
         </p>
         <% end %>
       </div>
-      <div class="col-md-10">
+      <div class="panel-style">
         <%= form_with model: @comment, url: comments_path do |f| %>
-        <%= f.hidden_field :post_id %>
-        <%= f.hidden_field :user_id%>
-        <div class="form-group">
-          <%= f.label :body  %><br/>
-          <%= f.text_field :body, class: "form-control" %>
-        </div>
-        <hr>
-        <div class="row">
-          <div class="col-md-2">
-            <%= f.submit '回答を送信', class: "btn btn-default" %>
+          <%= f.hidden_field :post_id %>
+          <%= f.hidden_field :user_id%>
+          <div class="form-group">
+            <%= f.label :body  %><br/>
+            <%= f.text_field :body, class: "form-control" %>
           </div>
-          <div class="col-md-4">
-            <a href="" onclick="hide_block(); return false;" class="btn btn-default">フォームを閉じる</a>
+          <hr>
+          <div class="panel-style">
+            <div class="panel-body-image">
+              <%= f.submit '回答を送信', class: "btn btn-default" %>
+            </div>
+            <div class="panel-body-body">
+              <a href="" onclick="hide_block(); return false;" class="btn btn-default">フォームを閉じる</a>
+            </div>
           </div>
-          <div class="col-md-6">
-
-          </div>
-        </div>
         <% end %>
       </div>
     </div>
@@ -120,38 +114,39 @@
     <h4 class="panel-title">回答<%=i+1%></h4>
   </div>
   <div class="panel-body">
-
-    <div class="row">
-      <div class="col-md-1 text-center">
+    <div class="panel-style">
+      <div class="panel-body-image">
         <% if comment.user.nil? %>
-          <%= image_tag 'thumbnails/default.png', class: "img-thumbnail avatar" %>
-          <p>
-          <small>名無しさん</small>
-          </p>
+          <div>
+            <%= image_tag 'thumbnails/default.png', class: "img-thumbnail avatar" %>
+            <small>名無しさん</small>
+          </div>
         <% else %>
-          <% if comment.user.image.present? %>
-            <%= link_to image_tag(comment.user.image.to_s, class: "img-thumbnail avatar"), user_path(comment.user)%>
-          <% else %>
-            <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail avatar"), user_path(comment.user)%>
-          <% end %>
-          <strong><%= link_to comment.user.try(:name), user_path(comment.user)%></strong>
+          <div>
+            <div>
+              <% if comment.user.image.present? %>
+                <%= link_to image_tag(comment.user.image.to_s, class: "img-thumbnail avatar"), user_path(comment.user)%>
+              <% else %>
+                <%= link_to image_tag(comment.user.thumbnail, class: "img-thumbnail avatar"), user_path(comment.user)%>
+              <% end %>
+            </div>
+            <strong><%= link_to comment.user.try(:name), user_path(comment.user)%></strong>
+          </div>
         <% end %>
       </div>
-      <div class="col-md-11">
+      <div class="panel-body-body">
         <p><%= simple_format(comment.body) %></p>
       </div>
     </div>
 
     <hr>
-    <div class="row">
-      <div class="col-md-3">
+    <div class="panel-style">
+      <div class="panel-body-image">
       </div>
-      <div class="col-xs-offset-1 col-md-2">
+      <div class="panel-fav">
         <%= render partial: 'comments/comments', locals: { comment: @komento.find(comment.id) } %>
       </div>
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-3">
+      <div class="panel-date">
         <%= comment.created_at %>
       </div>
     </div>

@@ -32,11 +32,24 @@ html,  body {
   display: table-cell;
   vertical-align: middle;
   width: 20%;
+  text-align:center;
 }
 .panel-body-body {
   display: table-cell;
   vertical-align: middle;
-  width: 80%
+  width: 80%;
+}
+.panel-fav {
+  display: table-cell;
+  vertical-align: middle;
+  width: 50%;
+  text-align:center;
+}
+.panel-date {
+  display: table-cell;
+  vertical-align: middle;
+  width: 30%;
+  text-align:center;
 }
 
 
