@@ -40,7 +40,7 @@
 
         <% if user_signed_in? %>
         <li>
-          <%= link_to current_user.name, mypage_path(current_user.id) %>
+          <%= link_to current_user.name, mypage_path %>
         </li>
         <% end %>
       </ul>
