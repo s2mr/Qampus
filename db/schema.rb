@@ -51,15 +51,6 @@ ActiveRecord::Schema.define(version: 20171228101753) do
     t.index ["post_id"], name: "index_messages_on_post_id"
   end
 
-  create_table "post_likes", force: :cascade do |t|
-    t.integer "post_id"
-    t.integer "like_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["like_id"], name: "index_post_likes_on_like_id"
-    t.index ["post_id"], name: "index_post_likes_on_post_id"
-  end
-
   create_table "posts", force: :cascade do |t|
     t.integer "user_id"
     t.integer "univ_id"
